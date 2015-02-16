@@ -10,7 +10,7 @@ Encoding.default_internal = Encoding::UTF_8
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-
+gem 'puma'
 gem 'passenger'
 
 

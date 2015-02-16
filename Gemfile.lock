@@ -77,6 +77,8 @@ GEM
       rack
       rake (>= 0.8.1)
     pg (0.18.1)
+    puma (2.11.1)
+      rack (>= 1.1, < 2.0)
     rack (1.6.0)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -149,6 +151,7 @@ DEPENDENCIES
   jquery-rails
   passenger
   pg
+  puma
   rails
   sass-rails
   therubyracer
