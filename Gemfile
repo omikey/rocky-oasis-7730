@@ -12,6 +12,7 @@ Encoding.default_internal = Encoding::UTF_8
 gem 'pg'
 gem 'puma'
 gem 'passenger'
+gem 'rails_12factor'
 
 
 # Gems used only for assets and not required
