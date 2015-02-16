@@ -7,8 +7,8 @@ class MainController < ApplicationController
     4.times do |k|
       @listening.push({title:"Part #{(k+1).to_s}",
                        score: 50 + rand(51),
-                       mypace: "#{(2 + rand(2)).to_s}s",
-                       yourpace: "#{(2 + rand(2)).to_s}s"})
+                       mypace: "#{(2 + rand(3)).to_s}s",
+                       yourpace: "#{(2 + rand(3)).to_s}s"})
     end
 
     @reading = []
