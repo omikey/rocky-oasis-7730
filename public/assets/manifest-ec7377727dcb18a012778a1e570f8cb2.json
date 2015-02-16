@@ -23,12 +23,18 @@
       "mtime": "2015-02-16T05:57:48-08:00",
       "size": 4357,
       "digest": "9a2692228937c80c66d20c60b42c25d1"
+    },
+    "main-236ca248be814ea08a48cbe4e7f13c44.js": {
+      "logical_path": "main.js",
+      "mtime": "2015-02-16T07:54:28-08:00",
+      "size": 4929,
+      "digest": "236ca248be814ea08a48cbe4e7f13c44"
     }
   },
   "assets": {
     "logo.png": "logo-f852122c2323628f87641a69a4da98d3.png",
     "application.js": "application-c557e63f7671192b6aa681392e621664.js",
-    "main.js": "main-7023c92b20a4a1c1c600a4d5efc8170d.js",
+    "main.js": "main-236ca248be814ea08a48cbe4e7f13c44.js",
     "application.css": "application-9a2692228937c80c66d20c60b42c25d1.css"
   }
 }
