@@ -33,19 +33,15 @@ angular.element(document).ready(function() {
 
         for (var i = 0; i < 7; i++) {
             context.beginPath();
-            context.arc(centerX, centerY, radius, 0, (i * (2 / 7)) * Math.PI, false);
+            context.arc(centerX, centerY, radius, 0, (((i * (2 / 7)) * Math.PI) + (1.5 * Math.PI)) % (2 * Math.PI), false);
             context.lineTo(centerX, centerY);
             context.stroke();
             context.closePath();
         }
         context.beginPath();
-        context.arc(centerX, centerY, radius, 0, 0, false);
-        context.lineTo(centerX, centerY);
-        context.stroke();
-        context.closePath();
-        context.beginPath();
         context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
         context.stroke();
+        context.closePath();
 
         context.font = "20px Arial";
         context.fillText("Previous", 520, 30);
@@ -57,8 +53,8 @@ angular.element(document).ready(function() {
         var greenY = [7];
         var blueX = [7];
         var blueY = [7];
-        var newX = centerX + (radius * cos);
-        var newY = centerY + (radius * sin);
+        var newX = centerX;
+        var newY = centerY - radius;
         var oldX;
         var oldY;
         greenX[0] = newX;
@@ -81,22 +77,22 @@ angular.element(document).ready(function() {
         {
             var myPart = $scope.data.listening[i].score;
             var yourPart = 100 - myPart;
-            greenX[(i+5) % 7] = ((greenX[(i+5) % 7] * myPart) + (centerX * yourPart)) / 100;
-            greenY[(i+5) % 7] = ((greenY[(i+5) % 7] * myPart) + (centerY * yourPart)) / 100;
+            greenX[(i + 7) % 7] = ((greenX[(i + 7) % 7] * myPart) + (centerX * yourPart)) / 100;
+            greenY[(i + 7) % 7] = ((greenY[(i + 7) % 7] * myPart) + (centerY * yourPart)) / 100;
         }
         for (var i = 0; i < 3; i++)
         {
             var myPart = $scope.data.reading[i].score;
             var yourPart = 100 - myPart;
-            greenX[(i+2) % 7] = ((greenX[(i+2) % 7] * myPart) + (centerX * yourPart)) / 100;
-            greenY[(i+2) % 7] = ((greenY[(i+2) % 7] * myPart) + (centerY * yourPart)) / 100;
+            greenX[(i + 4) % 7] = ((greenX[(i + 4) % 7] * myPart) + (centerX * yourPart)) / 100;
+            greenY[(i + 4) % 7] = ((greenY[(i + 4) % 7] * myPart) + (centerY * yourPart)) / 100;
         }
         context.font = "16px Arial";
-        var xshift = [0, -22,-50,-50,-22,0,7];
-        var yshift = [20,22,10,0,-10,-10,5];
+        var xshift = [-20, 5, 8, -10, -30, -50, -45];
+        var yshift = [-7, -5, 10, 25, 25, 10, -5];
         for (var i = 0; i < 7; i++)
         {
-            context.fillText("Part " + ((i+2)%7 + 1), blueX[i%7] + xshift[i], blueY[i%7] + yshift[i]);
+            context.fillText("Part " + ((i) % 7 + 1), blueX[i % 7] + xshift[i], blueY[i % 7] + yshift[i]);
 
             var myPart = $scope.data.improvement[i];
             var yourPart = 100 - myPart;

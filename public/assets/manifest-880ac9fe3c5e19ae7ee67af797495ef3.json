@@ -12,29 +12,23 @@
       "size": 1492189,
       "digest": "c557e63f7671192b6aa681392e621664"
     },
-    "main-7023c92b20a4a1c1c600a4d5efc8170d.js": {
+    "main-3a5b846f5ebc6f98363002169d5dc9e0.js": {
       "logical_path": "main.js",
-      "mtime": "2015-02-16T07:06:24-08:00",
-      "size": 5056,
-      "digest": "7023c92b20a4a1c1c600a4d5efc8170d"
+      "mtime": "2015-02-16T08:03:02-08:00",
+      "size": 4945,
+      "digest": "3a5b846f5ebc6f98363002169d5dc9e0"
     },
     "application-9a2692228937c80c66d20c60b42c25d1.css": {
       "logical_path": "application.css",
       "mtime": "2015-02-16T05:57:48-08:00",
       "size": 4357,
       "digest": "9a2692228937c80c66d20c60b42c25d1"
-    },
-    "main-236ca248be814ea08a48cbe4e7f13c44.js": {
-      "logical_path": "main.js",
-      "mtime": "2015-02-16T07:54:28-08:00",
-      "size": 4929,
-      "digest": "236ca248be814ea08a48cbe4e7f13c44"
     }
   },
   "assets": {
     "logo.png": "logo-f852122c2323628f87641a69a4da98d3.png",
     "application.js": "application-c557e63f7671192b6aa681392e621664.js",
-    "main.js": "main-236ca248be814ea08a48cbe4e7f13c44.js",
+    "main.js": "main-3a5b846f5ebc6f98363002169d5dc9e0.js",
     "application.css": "application-9a2692228937c80c66d20c60b42c25d1.css"
   }
 }
