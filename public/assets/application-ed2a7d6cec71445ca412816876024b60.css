@@ -12,6 +12,7 @@
  *
 
  */
+/* line 20, /home/mikey/Desktop/japanfour/app/assets/stylesheets/main.scss */
 .scores {
   background: #fff200;
   /* Old browsers */
@@ -28,7 +29,8 @@
   background: linear-gradient(to right, #fff200 49%, #0008ff 100%);
   /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff200', endColorstr='#0008ff', GradientType=1);
-  /* IE6-9 */ }
+    /* IE6-9 */
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
