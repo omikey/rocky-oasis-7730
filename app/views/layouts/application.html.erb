@@ -8,13 +8,18 @@
 <body style="margin:0; background-color: #262626" ng-controller="MasterCtrl">
 <table class="backdrop" style="width:100%; border-spacing: 0px;">
   <tr>
-    <td style="text-align: center; border:0; height:140px;" colspan="5">
+    <td></td>
+    <td colspan="9" style="border:0; height:140px; width:975px" colspan="5">
       <img src="<%= image_url('logo.png') %>" style="position:relative;" />
     </td>
+    <td></td>
   </tr>
   <tr>
     <td></td>
-    <td class='tabs' ng-style="{'background-color':($first ? 'gray' : '#262626'),visibility:($odd ? 'hidden' : 'visible'), width: ($odd ? '.5em' : '140px')}" ng-repeat="tab in ['Dashboard','1', 'Lessons','2','Training','3','Test','4','Community']">
+    <td class='tabs'
+        ng-style="{'background-color':($first ? 'gray' : '#262626'),visibility:($odd ? 'hidden' : 'visible'), width: ($odd ? '.5em' : '140px')}"
+        ng-repeat="tab in ['Dashboard','1', 'Lessons','2','Training','3','Test','4','Community']"
+        ng-click="focusTab($event)">
       {{tab}}
     </td>
     <td></td>
