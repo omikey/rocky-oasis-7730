@@ -2,9 +2,12 @@ app.controller("MasterCtrl", ['$scope', 'Dashboard', function ($scope, Dashboard
 $scope.data = [];
 
     $scope.focusTab = function (event) {
-        var thisTab = $(event.target);
         $('.tabs').css('background-color', '#262626');
-        thisTab.css('background-color', 'gray');
+        $(event.target).css('background-color', 'gray');
+        var getSlider = $('#' + $(event.target).attr('name'));
+        $('.sliders').not(getSlider).fadeOut(500);
+        getSlider.fadeIn(500);
+        getSlider.css('top', '0');
     };
 
 angular.element(document).ready(function() {

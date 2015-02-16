@@ -19,7 +19,8 @@
     <td class='tabs'
         ng-style="{'background-color':($first ? 'gray' : '#262626'),visibility:($odd ? 'hidden' : 'visible'), width: ($odd ? '.5em' : '140px')}"
         ng-repeat="tab in ['Dashboard','1', 'Lessons','2','Training','3','Test','4','Community']"
-        ng-click="focusTab($event)">
+        ng-click="focusTab($event)"
+        name="{{tab}}">
       {{tab}}
     </td>
     <td></td>
@@ -28,7 +29,7 @@
 <table style="width:100%; height:100%; border-spacing: 0px">
   <tr>
     <td></td>
-    <td style="width:960px; background-color: #ffffff; font-size: 1.3em; font-family: 'Arial';">
+    <td style="border: solid white 10px; width:960px; height:1000px; background-color: #ffffff; font-size: 1.3em; font-family: 'Arial';">
       <%= yield %>
     </td>
     <td></td>
