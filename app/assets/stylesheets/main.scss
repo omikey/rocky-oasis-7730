@@ -1,0 +1,28 @@
+// Place all the styles related to the Main controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_self
+ */
+
+.scores {
+  background: #fff200; /* Old browsers */
+  background: -moz-linear-gradient(left, #fff200 49%, #0008ff 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(49%, #fff200), color-stop(100%, #0008ff)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, #fff200 49%, #0008ff 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, #fff200 49%, #0008ff 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, #fff200 49%, #0008ff 100%); /* IE10+ */
+  background: linear-gradient(to right, #fff200 49%, #0008ff 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff200', endColorstr='#0008ff', GradientType=1); /* IE6-9 */
+}

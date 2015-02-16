@@ -1,0 +1,163 @@
+<div id="dashboard">
+  <table style="margin-top:1em; margin-left:1em;">
+    <tr>
+      <td style="width:7em;"></td>
+      <td>Goal Score: {{data.goal}}</td>
+    </tr>
+    <tr>
+      <td>Summary</td>
+      <td>Test Date: {{data.date}}</td>
+    </tr>
+  </table>
+  <hr>
+  <table style="margin-top:1em; margin-left:1em;">
+    <tr>
+      <td>Listening</td>
+      <td colspan="2"></td>
+      <td colspan="3" style="text-align: right">Average pace/per question</td>
+    </tr>
+    <tr style="text-align: center">
+      <td colspan="4"></td>
+      <td>Yours</td>
+      <td>Others</td>
+    </tr>
+    <tr ng-repeat="row in data.listening">
+      <td></td>
+      <td style="width:3.5em">
+        {{row.title}}:
+      </td>
+      <td>
+        <table style="width:100%; border-spacing: 0px">
+          <tr>
+            <td ng-style="{'background-color': 'yellow', 'width':(row.score)+'%'}">
+            </td>
+            <td class="scores">
+              &nbsp;
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td style="padding-left: 1em">
+        {{row.score}}%
+      </td>
+      <td style="text-align: center">
+        {{row.mypace}}
+      </td>
+      <td style="text-align: center">
+        {{row.yourpace}}
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Reading</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr ng-repeat="row in data.reading">
+      <td></td>
+      <td>
+        {{row.title}}:
+      </td>
+      <td>
+        <table style="width:100%; border-spacing: 0px">
+          <tr>
+            <td ng-style="{'background-color': 'yellow', 'width':(row.score)+'%'}">
+            </td>
+            <td class="scores">
+              &nbsp;
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td style="padding-left: 1em">
+        {{row.score}}%
+      </td>
+      <td style="text-align: center">
+        {{row.mypace}}
+      </td>
+      <td style="text-align: center">
+        {{row.yourpace}}
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="3">Reading Speed / wpm</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        Goal:
+      </td>
+      <td>
+        <table style="width:100%; border-spacing: 0px">
+          <tr>
+            <td ng-style="{'background-color': 'yellow', 'width':(data.readingWPM.percent)+'%'}">
+            </td>
+            <td class="scores">
+              &nbsp;
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td style="padding-left: 1em">
+        {{data.readingWPM.total}} / 150
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"></td>
+      <td style="text-align: center">{{data.readingWPM.percent}}%</td>
+    </tr>
+    <tr>
+      <td colspan="3">Vocabulary</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        Goal:
+      </td>
+      <td>
+        <table style="width:100%; border-spacing: 0px">
+          <tr>
+            <td ng-style="{'background-color': 'yellow', 'width':(data.vocabulary.percent)+'%'}">
+            </td>
+            <td class="scores">
+              &nbsp;
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td style="padding-left: 1em">
+        {{data.vocabulary.total}} / 8000
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"></td>
+      <td style="text-align: center">{{data.vocabulary.percent}}%</td>
+    </tr>
+    <tr>
+      <td>
+        &nbsp;
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Chart
+      </td>
+    </tr>
+  </table>
+  <hr>
+
+  <canvas id="thisGraph" height="450" width="620" class="graph" onload="drawGraphs()"></canvas>
+
+</div>
