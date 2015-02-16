@@ -8,6 +8,13 @@ app.factory('Dashboard', ['$resource', function ($resource) {
 }]);
 app.controller("MasterCtrl", ['$scope', 'Dashboard', function ($scope, Dashboard) {
 $scope.data = [];
+
+    $scope.focusTab = function (event) {
+        var thisTab = $(event.target);
+        $('.tabs').css('background-color', '#262626');
+        thisTab.css('background-color', 'gray');
+    };
+
 angular.element(document).ready(function() {
     Dashboard.get(function (resp) {
         $scope.data = resp;
