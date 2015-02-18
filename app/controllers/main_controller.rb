@@ -17,7 +17,7 @@ class MainController < ApplicationController
   def dashboard
     @listening = []
     4.times do |k|
-      @listening.push({title:"Part #{(k+1).to_s}",
+      @listening.push({title: "Part\u00a0#{(k+1).to_s}",
                        score: 50 + rand(51),
                        mypace: "#{(2 + rand(3)).to_s}s",
                        yourpace: "#{(2 + rand(3)).to_s}s"})
@@ -25,7 +25,7 @@ class MainController < ApplicationController
 
     @reading = []
     3.times do |k|
-      @reading.push({title:"Part #{(k+5).to_s}",
+      @reading.push({title: "Part\u00a0#{(k+5).to_s}",
                      score: 50 + rand(51),
                      mypace: "#{(25 + rand(56)).to_s}s",
                      yourpace: "#{(25 + rand(56)).to_s}s"})
