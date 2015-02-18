@@ -74,7 +74,7 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
     function signOut() {
         $('.sliders').fadeOut(100);
         SignOut.get();
-        window.location.href = 'http://0.0.0.0:3000';
+        window.location.href = 'http://rocky-oasis-7730.herokuapp.com';
     }
 
     function login() {
@@ -86,7 +86,7 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
     $scope.refresh = function () {
         $(".sliders").fadeOut(1000);
         $.wait(1000).then(function () {
-            window.location.href = "http://0.0.0.0:3000"
+            window.location.href = "http://rocky-oasis-7730.herokuapp.com"
         });
     };
 

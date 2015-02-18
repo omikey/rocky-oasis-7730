@@ -20,7 +20,7 @@ class UserMailer < ApplicationMailer
     user.save
     @login = user[:login]
     @first_name = user[:first_name]
-    @url = 'http://0.0.0.0:3000/users/' + user[:token]
+    @url = 'http://rocky-oasis-7730.herokuapp.com/users/' + user[:token]
 
     mail(to: user[:email], subject: 'Welcome to My Awesome Site')
   end
