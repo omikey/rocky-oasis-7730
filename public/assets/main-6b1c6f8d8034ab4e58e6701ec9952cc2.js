@@ -109,8 +109,8 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
 
     $scope.messenger = function (message, x, y, title, array) {
         $('#message').html(message);
-        $('#dialog-confirm').attr('title', title);
         var dialogConfirm = $('#dialog-confirm');
+        dialogConfirm.attr('title', title);
         var labelHash = [0];
         for (i in array) {
             labelHash[i] = {
