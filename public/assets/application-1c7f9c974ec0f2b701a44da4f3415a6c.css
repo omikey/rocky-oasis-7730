@@ -31,7 +31,6 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff200', endColorstr='#0008ff', GradientType=1);
     /* IE6-9 */
 }
-
 /* line 1, /home/mikey/Desktop/japanfour/app/assets/stylesheets/scaffolds.scss */
 body {
     background-color: #fff;
@@ -59,12 +58,10 @@ pre {
 a {
     color: #000;
 }
-
 /* line 23, /home/mikey/Desktop/japanfour/app/assets/stylesheets/scaffolds.scss */
 a:visited {
     color: #666;
 }
-
 /* line 26, /home/mikey/Desktop/japanfour/app/assets/stylesheets/scaffolds.scss */
 a:hover {
     color: #fff;
@@ -97,7 +94,6 @@ div.field, div.actions {
     margin-bottom: 20px;
     background-color: #f0f0f0;
 }
-
 /* line 55, /home/mikey/Desktop/japanfour/app/assets/stylesheets/scaffolds.scss */
 #error_explanation h2 {
     text-align: left;
@@ -109,13 +105,11 @@ div.field, div.actions {
     background-color: #c00;
     color: #fff;
 }
-
 /* line 65, /home/mikey/Desktop/japanfour/app/assets/stylesheets/scaffolds.scss */
 #error_explanation ul li {
     font-size: 12px;
     list-style: square;
 }
-
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
