@@ -49,9 +49,8 @@ $scope.data = [];
     };
 
     function signOut() {
-        $('.sliders').fadeOut(100);
         SignOut.get();
-        window.location.href = 'http://rocky-oasis-7730.herokuapp.com/';
+        $scope.refresh();
     }
 
     function login() {
