@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails'
-ruby '1.9.3'
+ruby '2.1.2'
 
 Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
@@ -13,7 +13,6 @@ gem 'pg'
 gem 'puma'
 gem 'passenger'
 gem 'rails_12factor'
-
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -27,12 +26,15 @@ group :assets do
   gem 'uglifier'
 end
 
+gem 'pry-rails'
+
+gem 'bcrypt'
 gem 'jquery-rails'
 
-gem 'activerecord', '4.2.0'
-gem 'activeresource', '4.0.0'
-gem 'activemodel', '4.2.0'
-gem 'activesupport', '4.2.0'
+gem 'activerecord'
+gem 'activeresource'
+gem 'activemodel'
+gem 'activesupport'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -48,6 +50,8 @@ gem 'activesupport', '4.2.0'
 
 # To use debugger
 # gem 'debugger'
+
+gem 'byebug'
 
 gem 'execjs'
 

@@ -1,5 +1,9 @@
-app.controller("MasterCtrl", ['$scope', 'Dashboard', function ($scope, Dashboard) {
+app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', function ($scope, $timeout, Dashboard, SignOut) {
 $scope.data = [];
+    $scope.loginId = '';
+    $scope.loginPass = '';
+    var clock = 0;
+
 
     $scope.focusTab = function (event) {
         $('.tabs').css('background-color', '#262626');
@@ -10,11 +14,104 @@ $scope.data = [];
         getSlider.css('top', '0');
     };
 
+    $scope.alert = function (message) {
+        clock++;
+        if (clock == 6) {
+            if (message) {
+                $scope.messenger(message, 300, 200, "Welcome!", ["Cool!"]);
+            }
+            $('.sliders').not('#Dashboard').fadeOut(500);
+            $('#Dashboard').fadeIn(500);
+            $('#Dashboard').css('top', '0');
+        }
+    };
+
+    $scope.doLogin = function () {
+        alert($scope.loginId);
+        alert($scope.loginPass);
+    };
+
+    $scope.regLog = function (switcher) {
+        switch (switcher) {
+            case 1:
+                register();
+                break;
+            case 2:
+                login();
+                break;
+            case 3:
+                signOut();
+                break;
+            case 4:
+                profile();
+                break;
+        }
+    };
+
+    function signOut() {
+        $('.sliders').fadeOut(100);
+        SignOut.get();
+        window.location.href = 'http://0.0.0.0:3000';
+    }
+
+    function login() {
+        $scope.messenger($('#login').html(), 300, 270, "Sign-in", ["Cancel", "Submit"]);
+        $('.ui-button:last').attr('onclick', '$("input:last").click()');
+        $('form').attr('onsubmit', '$("#refresh").click()');
+    }
+
+    $scope.refresh = function () {
+        $(".sliders").fadeOut(1000);
+        $.wait(1000).then(function () {
+            window.location.href = "http://0.0.0.0:3000"
+        });
+    };
+
+    $.wait = function (ms) {
+        var defer = $.Deferred();
+        setTimeout(function () {
+            defer.resolve();
+        }, ms);
+        return defer;
+    };
+
+    function profile() {
+
+    }
+
+    function register() {
+        $scope.messenger($('#register').html(), 300, 440, "Register for free!", ["Cancel", "Submit"]);
+        $('.ui-button:last').attr('onclick', '$("input:last").click()');
+        $('form').attr('onsubmit', '$("#verify").click()');
+    }
+
+    $scope.messenger = function (message, x, y, title, array) {
+        $('#message').html(message);
+        $('#dialog-confirm').attr('title', title);
+        var dialogConfirm = $('#dialog-confirm');
+        var labelHash = [0];
+        for (i in array) {
+            labelHash[i] = {
+                text: array[i],
+                click: function () {
+                    $(this).dialog("close");
+                }
+            };
+        }
+        dialogConfirm.dialog({
+            resizable: false,
+            height: y,
+            width: x,
+            modal: true,
+            buttons: labelHash
+        });
+    };
+
 angular.element(document).ready(function() {
     Dashboard.get(function (resp) {
         $scope.data = resp;
 
-        var canvas = document.getElementById('thisGraph');
+        var canvas = $('#thisGraph').get(0);
         var context = canvas.getContext('2d');
         context.clearRect(0, 0, canvas.width, canvas.height);
         var centerX = canvas.width / 2;

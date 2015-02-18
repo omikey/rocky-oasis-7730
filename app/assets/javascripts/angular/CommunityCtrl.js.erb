@@ -1,0 +1,10 @@
+app.controller("CommunityCtrl", ['$scope', 'Community', function ($scope, Community) {
+    $scope.data = [];
+
+
+    angular.element(document).ready(function () {
+        Community.get(function (resp) {
+            $scope.data = resp.hello + '!!!';
+        });
+    });
+}]);

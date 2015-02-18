@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  root :to => 'main#index'
-  get 'main/dashboard'
 
+  root :to => 'main#index'
+
+  resources :users
+  get 'main/dashboard'
+  get 'main/community'
+  get 'main/signout'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,5 +1,17 @@
+require 'pry'
+
 class MainController < ApplicationController
   def index
+    if params[:mission] == 'accomplished'
+      @alert = 'You are now a registered member!'
+    end
+    @user = User.new
+    @login = session[:user]
+  end
+
+  def signout
+    session.destroy
+    render nothing: true
   end
 
   def dashboard
@@ -35,5 +47,9 @@ class MainController < ApplicationController
                   readingWPM: @readingWPM, vocabulary: @vocabulary,
                   improvement: @improvement, date: Time.now().strftime('%B %d, %Y'),
                   goal: (rand(5)+6)*100}
+  end
+
+  def community
+    render json: {hello: 'hello'}
   end
 end

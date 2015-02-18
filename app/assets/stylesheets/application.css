@@ -75,3 +75,15 @@
     margin-left: 4em;
     margin-bottom: 6em;
 }
+
+.logins {
+    display: inline-block;
+    margin-right: 1em;
+    color: white;
+    font-size: medium;
+}
+
+.logins:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

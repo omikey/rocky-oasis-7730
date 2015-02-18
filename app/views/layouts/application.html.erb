@@ -9,10 +9,14 @@
 <table class="backdrop" style="width:100%; border-spacing: 0px;">
   <tr>
     <td></td>
-    <td colspan="9" style="border:0; height:140px; width:975px" colspan="5">
+    <td colspan="7" style="border:0; height:140px; width:975px" colspan="5">
       <img src="<%= image_url('logo.png') %>" style="position:relative;" />
     </td>
-    <td></td>
+    <td colspan="2">
+      <div ng-repeat="option in ['<%= @login ? "Sign Out" : "Register" %>','<%= @login ? @login["login"] : "Sign In" %>']" class="logins" id="logger{{$index+1}}" ng-click="<%= @login ? 'regLog($index+3)' : 'regLog($index+1)' %>">
+        {{option}}
+      </div>
+    </td>
   </tr>
   <tr>
     <td></td>
