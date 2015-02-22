@@ -21,8 +21,17 @@ $scope.data = [];
                 $scope.messenger(message, 300, 200, "Welcome!", ["Cool!"]);
             }
             $('.sliders').not('#Dashboard').fadeOut(500);
-            $('#Dashboard').fadeIn(500);
-            $('#Dashboard').css('top', '0');
+            var dash = $('#Dashboard');
+            dash.fadeIn(500);
+            dash.css('top', '0');
+            var canv = $('canvas').get(0);
+
+            dash.append('<img id="thisGraph" style="border: solid gray 5px; ' +
+            'border-radius: 20px; background-color: #f0f0ff; margin-left: 4em; ' +
+            'margin-bottom: 6em; height:20em; width:27em;" src="' +
+            canv.toDataURL() + '" />');
+            canv.outerHTML = '';
+
         }
     };
 
@@ -116,8 +125,8 @@ angular.element(document).ready(function() {
         context.clearRect(0, 0, canvas.width, canvas.height);
         var centerX = canvas.width / 2;
         var centerY = canvas.height / 2;
-        var radius = 200;
-        context.lineWidth = 3;
+        var radius = 2000;
+        context.lineWidth = 30;
         context.strokeStyle = '#000000';
         context.lineCap = 'round';
         context.lineJoin = 'round';
@@ -134,9 +143,9 @@ angular.element(document).ready(function() {
         context.stroke();
         context.closePath();
 
-        context.font = "20px Arial";
-        context.fillText("Previous", 520, 30);
-        context.fillText("Now", 520, 60);
+        context.font = "200px Arial";
+        context.fillText("Previous", 5200, 300);
+        context.fillText("Now", 5200, 600);
 
         var cos = 0.62348980185873353052500488400424;
         var sin = 0.78183148246802980870844452667406;
@@ -178,9 +187,9 @@ angular.element(document).ready(function() {
             greenX[(i + 4) % 7] = ((greenX[(i + 4) % 7] * myPart) + (centerX * yourPart)) / 100;
             greenY[(i + 4) % 7] = ((greenY[(i + 4) % 7] * myPart) + (centerY * yourPart)) / 100;
         }
-        context.font = "16px Arial";
-        var xshift = [-20, 5, 8, -10, -30, -50, -45];
-        var yshift = [-7, -5, 10, 25, 25, 10, -5];
+        context.font = "160px Arial";
+        var xshift = [-200, 50, 80, -100, -300, -500, -450];
+        var yshift = [-70, -50, 100, 250, 250, 100, -50];
         for (var i = 0; i < 7; i++)
         {
             context.fillText("Part " + ((i) % 7 + 1), blueX[i % 7] + xshift[i], blueY[i % 7] + yshift[i]);
@@ -215,15 +224,15 @@ angular.element(document).ready(function() {
         {
             context.strokeStyle = ['#8888ff','#0000ff'][i];
             context.beginPath();
-            context.lineTo(490, 15 + (30 * i));
+            context.lineTo(4900, 150 + (300 * i));
             context.stroke();
-            context.lineTo(510, 15 + (30 * i));
+            context.lineTo(5100, 150 + (300 * i));
             context.stroke();
-            context.lineTo(510, 30 + (30 * i));
+            context.lineTo(5100, 300 + (300 * i));
             context.stroke();
-            context.lineTo(490, 30 + (30 * i));
+            context.lineTo(4900, 300 + (300 * i));
             context.stroke();
-            context.lineTo(490, 15 + (30 * i));
+            context.lineTo(4900, 150 + (300 * i));
             context.stroke();
             context.closePath();
         }
@@ -231,15 +240,15 @@ angular.element(document).ready(function() {
         var xLines = [10];
         var yLines = [10];
         context.strokeStyle = "#000000";
-        context.font = "10px Arial";
+        context.font = "100px Arial";
         for (var i = 0; i < 5; i++) {
-            xLines[0 + (2 * i)] = centerX - 5;
-            yLines[0 + (2 * i)] = centerY - (40 * (i + 1));
-            xLines[1 + (2 * i)] = centerX + 5;
-            yLines[1 + (2 * i)] = centerY - (40 * (i + 1));
-            context.fillText("" + ((i + 1) * 20), centerX + 8 + (i == 4 ? -3 : 0), centerY - (40 * (i + 1)) + 5 + (i == 4 ? 10 : 0));
+            xLines[0 + (2 * i)] = centerX - 50;
+            yLines[0 + (2 * i)] = centerY - (400 * (i + 1));
+            xLines[1 + (2 * i)] = centerX + 50;
+            yLines[1 + (2 * i)] = centerY - (400 * (i + 1));
+            context.fillText("" + ((i + 1) * 20), centerX + 80 + (i == 4 ? -30 : 0), centerY - (400 * (i + 1)) + 50 + (i == 4 ? 100 : 0));
         }
-        context.lineWidth = 1;
+        context.lineWidth = 10;
         for (var i = 0; i < 7; i++) {
             for (var j = 0; j < 5; j++) {
                 context.beginPath();
