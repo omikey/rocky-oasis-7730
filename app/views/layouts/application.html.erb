@@ -21,7 +21,7 @@
   <tr>
     <td></td>
     <td class='tabs'
-        ng-style="{'background-color':($first ? 'gray' : '#262626'),visibility:($odd ? 'hidden' : 'visible'), width: ($odd ? '.5em' : '8em')}"
+        ng-style="{'background-color':($first ? 'gray' : '#262626'),visibility:($odd ? 'hidden' : 'visible'), width: ($odd ? '.5em' : '<%= (ENV["HTTP_USER_AGENT"].to_s.downcase.include? "msie") ? "4em" : "8em" %>')}"
         ng-repeat="tab in ['Dashboard','1', 'Lessons','2','Training','3','Test','4','Community']"
         ng-click="focusTab($event)"
         name="{{tab}}">
