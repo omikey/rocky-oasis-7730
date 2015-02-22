@@ -19,7 +19,7 @@
     </td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
+    <td></td>
     <td class='tabs'
         ng-style="{'background-color':($first ? 'gray' : '#262626'),visibility:($odd ? 'hidden' : 'visible'), width: ($odd ? '.5em' : '8em')}"
         ng-repeat="tab in ['Dashboard','1', 'Lessons','2','Training','3','Test','4','Community']"
@@ -27,20 +27,20 @@
         name="{{tab}}">
       {{tab}}
     </td>
-    <td>&nbsp;</td>
+    <td></td>
   </tr>
   <tr>
-    <td colspan="11">
+    <td></td>
+    <td colspan="9">
       <table style="width:100%; height:100%; border-spacing: 0px">
         <tr>
-          <td></td>
           <td style="border: solid white 10px; width:960px; height:1000px; background-color: #ffffff; font-size: 1.3em; font-family: 'Arial';">
             <%= yield %>
           </td>
-          <td></td>
         </tr>
       </table>
     </td>
+    <td></td>
   </tr>
 </table>
 </body>
