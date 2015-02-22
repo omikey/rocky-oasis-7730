@@ -5,7 +5,7 @@
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application", controller_name %>
 </head>
-<body style="margin:0; background-color: #262626" ng-controller="MasterCtrl">
+<body style="margin:0; background-color: #262626" ng-controller="MasterCtrl" onload="alert('<%= request.env['HTTP_USER_AGENT'].downcase %>')">
 <table class="backdrop" style="background-size: 100% 173px; background-repeat: no-repeat; width:100%; border-spacing: 0px;">
   <tr>
     <td></td>
@@ -21,7 +21,7 @@
   <tr>
     <td></td>
     <td class='tabs'
-        ng-style="{'background-color':($first ? 'gray' : '#262626'),visibility:($odd ? 'hidden' : 'visible'), width: ($odd ? '.5em' : '<%= request.ENV["HTTP_USER_AGENT"].to_s.downcase.include? "msie" ? "4em" : "8em" %>')}"
+        ng-style="{'background-color':($first ? 'gray' : '#262626'),visibility:($odd ? 'hidden' : 'visible'), width: ($odd ? '.5em' : '8em')}"
         ng-repeat="tab in ['Dashboard','1', 'Lessons','2','Training','3','Test','4','Community']"
         ng-click="focusTab($event)"
         name="{{tab}}">
