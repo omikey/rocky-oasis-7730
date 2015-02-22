@@ -1,30 +1,29 @@
 <div id="Dashboard" class="sliders" style="display:none;">
-  <table style="margin-top:1em; margin-left:1em;width:90%;">
+  <table style="margin-top:1.2em; margin-left:1.2em;width:90%;">
     <tr>
       <td style="width:7em;"></td>
-      <td>Goal Score: {{data.goal}}</td>
+      <td style="font-size:1.2em;">Goal Score: {{data.goal}}</td>
     </tr>
     <tr>
-      <td>Summary</td>
-      <td>Test Date: {{data.date}}</td>
+      <td style="font-size:1.2em;">Summary</td>
+      <td style="font-size:1.2em;">Test Date: {{data.date}}</td>
     </tr>
   </table>
   <hr>
-  <table style="margin-top:1em; margin-left:1em;width:90%;">
+  <table style="margin-top:1.2em; margin-left:1.2em;width:90%;">
     <tr>
-      <td>Listening</td>
+      <td style="font-size:1.2em;">Listening</td>
       <td colspan="3"></td>
-      <td colspan="2" style="text-align: center; font-weight: 700;">Average&nbsp;pace/per&nbsp;question</td>
+      <td colspan="2" style="font-size:1.2em; text-align: center; font-weight: 700;">Average&nbsp;pace/per&nbsp;question</td>
     </tr>
     <tr style="text-align: center">
       <td colspan="4"></td>
-      <td>Yours</td>
-      <td>Others</td>
-      <td style="visibility:hidden">MiKeY</td>
+      <td style="font-size:1.2em;">Yours</td>
+      <td style="font-size:1.2em;">Others</td>
     </tr>
     <tr ng-repeat="row in data.listening">
       <td></td>
-      <td style="width:3.5em">
+      <td style="width:3.5em; font-size:1.2em;">
         {{row.title}}:
       </td>
       <td>
@@ -34,17 +33,18 @@
               &nbsp;
             </td>
             <td class="scores" ng-if="row.score!=100">
+              &nbsp;
             </td>
           </tr>
         </table>
       </td>
-      <td style="padding-left: 1em">
+      <td style="padding-left: 1.2em; font-size:1.2em;">
         {{row.score}}%
       </td>
-      <td style="text-align: center">
+      <td style="text-align: center; font-size:1.2em;">
         {{row.mypace}}
       </td>
-      <td style="text-align: center">
+      <td style="text-align: center; font-size:1.2em;">
         {{row.yourpace}}
       </td>
     </tr>
@@ -52,14 +52,14 @@
       <td>&nbsp;</td>
     </tr>
     <tr>
-      <td>Reading</td>
+      <td style="font-size:1.2em;">Reading</td>
     </tr>
     <tr>
       <td>&nbsp;</td>
     </tr>
     <tr ng-repeat="row in data.reading">
       <td></td>
-      <td>
+      <td style="font-size:1.2em;">
         {{row.title}}:
       </td>
       <td>
@@ -69,17 +69,18 @@
               &nbsp;
             </td>
             <td class="scores" ng-if="row.score!=100">
+              &nbsp;
             </td>
           </tr>
         </table>
       </td>
-      <td style="padding-left: 1em">
+      <td style=" padding-left: 1.2em;font-size:1.2em;">
         {{row.score}}%
       </td>
-      <td style="text-align: center">
+      <td style="text-align: center;font-size:1.2em;">
         {{row.mypace}}
       </td>
-      <td style="text-align: center">
+      <td style="text-align: center;font-size:1.2em;">
         {{row.yourpace}}{{alert('<%= @alert %>')}}
       </td>
     </tr>
@@ -87,14 +88,14 @@
       <td>&nbsp;</td>
     </tr>
     <tr>
-      <td colspan="3">Reading Speed / wpm</td>
+      <td colspan="3" style="font-size:1.2em;">Reading Speed / wpm</td>
     </tr>
     <tr>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td></td>
-      <td>
+      <td style="font-size:1.2em;">
         Goal:
       </td>
       <td>
@@ -103,28 +104,29 @@
             <td ng-style="{'background-color': 'yellow', 'width':(data.readingWPM.percent)+'%'}">
               &nbsp;
             </td>
-            <td class="scores" ng-if="row.score!=100">
+            <td class="scores" ng-if="data.readingWPM.percent!=100">
+              &nbsp;
             </td>
           </tr>
         </table>
       </td>
-      <td colspan="3" style="padding-left: 1em">
+      <td colspan="3" style="padding-left: 1.2em;font-size:1.2em;">
         {{data.readingWPM.total}} / 150
       </td>
     </tr>
     <tr>
       <td colspan="2"></td>
-      <td style="text-align: center">{{data.readingWPM.percent}}%</td>
+      <td style="text-align: center;font-size:1.2em;">{{data.readingWPM.percent}}%</td>
     </tr>
     <tr>
-      <td colspan="3">Vocabulary</td>
+      <td colspan="3" style="font-size:1.2em;">Vocabulary</td>
     </tr>
     <tr>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td></td>
-      <td>
+      <td style="font-size:1.2em;">
         Goal:
       </td>
       <td>
@@ -133,18 +135,19 @@
             <td ng-style="{'background-color': 'yellow', 'width':(data.vocabulary.percent)+'%'}">
               &nbsp;
             </td>
-            <td class="scores" ng-if="row.score!=100">
+            <td class="scores" ng-if="data.vocabulary.percent!=100">
+              &nbsp;
             </td>
           </tr>
         </table>
       </td>
-      <td colspan="3" style="padding-left: 1em">
+      <td colspan="3" style="padding-left: 1.2em;font-size:1.2em;">
         {{data.vocabulary.total}} / 8000
       </td>
     </tr>
     <tr>
       <td colspan="2"></td>
-      <td style="text-align: center">{{data.vocabulary.percent}}%</td>
+      <td style="text-align: center;font-size:1.2em;">{{data.vocabulary.percent}}%</td>
     </tr>
     <tr>
       <td>
@@ -152,7 +155,7 @@
       </td>
     </tr>
     <tr>
-      <td>
+      <td style="font-size:1.2em;">
         Chart
       </td>
     </tr>
