@@ -31,9 +31,9 @@
         <table style="width:100%; border-spacing: 0px">
           <tr>
             <td ng-style="{'background-color': 'yellow', 'width':(row.score)+'%'}">
-            </td>
-            <td class="scores">
               &nbsp;
+            </td>
+            <td class="scores" ng-if="row.score!=100">
             </td>
           </tr>
         </table>
@@ -66,9 +66,9 @@
         <table style="width:100%; border-spacing: 0px">
           <tr>
             <td ng-style="{'background-color': 'yellow', 'width':(row.score)+'%'}">
-            </td>
-            <td class="scores">
               &nbsp;
+            </td>
+            <td class="scores" ng-if="row.score!=100">
             </td>
           </tr>
         </table>
@@ -101,9 +101,9 @@
         <table style="width:100%; border-spacing: 0px">
           <tr>
             <td ng-style="{'background-color': 'yellow', 'width':(data.readingWPM.percent)+'%'}">
-            </td>
-            <td class="scores">
               &nbsp;
+            </td>
+            <td class="scores" ng-if="row.score!=100">
             </td>
           </tr>
         </table>
@@ -131,9 +131,9 @@
         <table style="width:100%; border-spacing: 0px">
           <tr>
             <td ng-style="{'background-color': 'yellow', 'width':(data.vocabulary.percent)+'%'}">
-            </td>
-            <td class="scores">
               &nbsp;
+            </td>
+            <td class="scores" ng-if="row.score!=100">
             </td>
           </tr>
         </table>
