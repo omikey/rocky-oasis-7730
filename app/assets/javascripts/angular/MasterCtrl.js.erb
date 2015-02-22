@@ -21,16 +21,16 @@ $scope.data = [];
                 $scope.messenger(message, 300, 200, "Welcome!", ["Cool!"]);
             }
             $('.sliders').not('#Dashboard').fadeOut(500);
-            var dash = $('#Dashboard');
-            dash.fadeIn(500);
-            dash.css('top', '0');
             var canv = $('canvas').get(0);
 
+            var dash = $('#Dashboard');
+            dash.css('top', '0');
             dash.append('<img id="thisGraph" style="border: solid gray 5px; ' +
             'border-radius: 20px; background-color: #f0f0ff; margin-left: 4em; ' +
             'margin-bottom: 6em; height:20em; width:27em;" src="' +
             canv.toDataURL() + '" />');
             canv.outerHTML = '';
+            dash.fadeIn(500);
 
         }
     };
@@ -69,8 +69,8 @@ $scope.data = [];
     }
 
     $scope.refresh = function () {
-        $(".sliders").fadeOut(1000);
-        $.wait(1000).then(function () {
+        $(".sliders").fadeOut(1500);
+        $.wait(1500).then(function () {
             window.location.href = "http://rocky-oasis-7730.herokuapp.com"
         });
     };
@@ -246,7 +246,7 @@ angular.element(document).ready(function() {
             yLines[0 + (2 * i)] = centerY - (400 * (i + 1));
             xLines[1 + (2 * i)] = centerX + 50;
             yLines[1 + (2 * i)] = centerY - (400 * (i + 1));
-            context.fillText("" + ((i + 1) * 20), centerX + 80 + (i == 4 ? -30 : 0), centerY - (400 * (i + 1)) + 50 + (i == 4 ? 100 : 0));
+            context.fillText("" + ((i + 1) * 20), centerX + 80 + (i == 4 ? -30 : 0), centerY - (400 * (i + 1)) + 50 + (i == 4 ? 70 : 0));
         }
         context.lineWidth = 10;
         for (var i = 0; i < 7; i++) {
