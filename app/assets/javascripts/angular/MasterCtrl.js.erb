@@ -24,11 +24,13 @@ $scope.data = [];
             var dash = $('#Dashboard');
             dash.css('top', '0');
 
-            dash.append('<img style="border: solid gray 5px; ' +
-            'border-radius: 20px; background-color: #f0f0ff; margin-left: 4em; ' +
-            'margin-bottom: 6em; height:30em;" src="' +
-            $('canvas').get(0).toDataURL() + '" />');
-            $('canvas').get(0).outerHTML = '';
+            if ($(window).width() > 400) {
+                dash.append('<img style="border: solid gray 5px; ' +
+                'border-radius: 20px; background-color: #f0f0ff; margin-left: 4em; ' +
+                'margin-bottom: 6em; height:30em;" src="' +
+                $('canvas').get(0).toDataURL() + '" />');
+                $('canvas').get(0).outerHTML = '';
+            }
 
             dash.fadeIn(500);
         }
@@ -119,13 +121,17 @@ angular.element(document).ready(function() {
     Dashboard.get(function (resp) {
         $scope.data = resp;
 
+        var cell = $(window).width() > 400 ? 10 : 1;
+        $('#thisGraph').attr('width', 620 * cell);
+        $('#thisGraph').attr('height', 450 * cell);
+
         var canvas = $('#thisGraph').get(0);
         var context = canvas.getContext('2d');
         context.clearRect(0, 0, canvas.width, canvas.height);
         var centerX = canvas.width / 2;
         var centerY = canvas.height / 2;
-        var radius = 2000;
-        context.lineWidth = 30;
+        var radius = 200 * cell;
+        context.lineWidth = 3 * cell;
         context.strokeStyle = '#000000';
         context.lineCap = 'round';
         context.lineJoin = 'round';
@@ -142,9 +148,9 @@ angular.element(document).ready(function() {
         context.stroke();
         context.closePath();
 
-        context.font = "200px Arial";
-        context.fillText("Previous", 5200, 300);
-        context.fillText("Now", 5200, 600);
+        context.font = "" + (20 * cell) + "px Arial";
+        context.fillText("Previous", 520 * cell, 30 * cell);
+        context.fillText("Now", 520 * cell, 60 * cell);
 
         var cos = 0.62348980185873353052500488400424;
         var sin = 0.78183148246802980870844452667406;
@@ -186,9 +192,9 @@ angular.element(document).ready(function() {
             greenX[(i + 4) % 7] = ((greenX[(i + 4) % 7] * myPart) + (centerX * yourPart)) / 100;
             greenY[(i + 4) % 7] = ((greenY[(i + 4) % 7] * myPart) + (centerY * yourPart)) / 100;
         }
-        context.font = "160px Arial";
-        var xshift = [-200, 50, 80, -100, -300, -500, -450];
-        var yshift = [-70, -50, 100, 250, 250, 100, -50];
+        context.font = "" + (16 * cell) + "px Arial";
+        var xshift = [-20 * cell, 5 * cell, 8 * cell, -10 * cell, -30 * cell, -50 * cell, -45 * cell];
+        var yshift = [-7 * cell, -5 * cell, 10 * cell, 25 * cell, 25 * cell, 10 * cell, -5 * cell];
         for (var i = 0; i < 7; i++)
         {
             context.fillText("Part " + ((i) % 7 + 1), blueX[i % 7] + xshift[i], blueY[i % 7] + yshift[i]);
@@ -223,15 +229,15 @@ angular.element(document).ready(function() {
         {
             context.strokeStyle = ['#8888ff','#0000ff'][i];
             context.beginPath();
-            context.lineTo(4900, 150 + (300 * i));
+            context.lineTo(490 * cell, 15 * cell + (30 * cell * i));
             context.stroke();
-            context.lineTo(5100, 150 + (300 * i));
+            context.lineTo(510 * cell, 15 * cell + (30 * cell * i));
             context.stroke();
-            context.lineTo(5100, 300 + (300 * i));
+            context.lineTo(510 * cell, 30 * cell + (30 * cell * i));
             context.stroke();
-            context.lineTo(4900, 300 + (300 * i));
+            context.lineTo(490 * cell, 30 * cell + (30 * cell * i));
             context.stroke();
-            context.lineTo(4900, 150 + (300 * i));
+            context.lineTo(490 * cell, 15 * cell + (30 * cell * i));
             context.stroke();
             context.closePath();
         }
@@ -239,15 +245,15 @@ angular.element(document).ready(function() {
         var xLines = [10];
         var yLines = [10];
         context.strokeStyle = "#000000";
-        context.font = "100px Arial";
+        context.font = "" + (10 * cell) + "px Arial";
         for (var i = 0; i < 5; i++) {
-            xLines[0 + (2 * i)] = centerX - 50;
-            yLines[0 + (2 * i)] = centerY - (400 * (i + 1));
-            xLines[1 + (2 * i)] = centerX + 50;
-            yLines[1 + (2 * i)] = centerY - (400 * (i + 1));
-            context.fillText("" + ((i + 1) * 20), centerX + 80 + (i == 4 ? -30 : 0), centerY - (400 * (i + 1)) + 50 + (i == 4 ? 70 : 0));
+            xLines[0 + (2 * i)] = centerX - 5 * cell;
+            yLines[0 + (2 * i)] = centerY - (40 * cell * (i + 1));
+            xLines[1 + (2 * i)] = centerX + 5 * cell;
+            yLines[1 + (2 * i)] = centerY - (40 * cell * (i + 1));
+            context.fillText("" + ((i + 1) * 2 * cell), centerX + 8 * cell + (i == 4 ? -3 * cell : 0), centerY - (40 * cell * (i + 1)) + 5 * cell + (i == 4 ? 7 * cell : 0));
         }
-        context.lineWidth = 10;
+        context.lineWidth = cell;
         for (var i = 0; i < 7; i++) {
             for (var j = 0; j < 5; j++) {
                 context.beginPath();
