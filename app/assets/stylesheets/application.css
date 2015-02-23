@@ -25,6 +25,11 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8e3931', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
 }
 
+input[type="password"] {
+    letter-spacing: 2px;
+    padding-left: 2px;
+}
+
 .tabs {
     color:white;
     font-size: 1.5em;
