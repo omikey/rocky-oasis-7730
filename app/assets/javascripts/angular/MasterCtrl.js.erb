@@ -251,7 +251,7 @@ angular.element(document).ready(function() {
             yLines[0 + (2 * i)] = centerY - (40 * cell * (i + 1));
             xLines[1 + (2 * i)] = centerX + 5 * cell;
             yLines[1 + (2 * i)] = centerY - (40 * cell * (i + 1));
-            context.fillText("" + ((i + 1) * 2 * cell), centerX + 8 * cell + (i == 4 ? -3 * cell : 0), centerY - (40 * cell * (i + 1)) + 5 * cell + (i == 4 ? 7 * cell : 0));
+            context.fillText("" + ((i + 1) * 20), centerX + 8 * cell + (i == 4 ? -3 * cell : 0), centerY - (40 * cell * (i + 1)) + 5 * cell + (i == 4 ? 7 * cell : 0));
         }
         context.lineWidth = cell;
         for (var i = 0; i < 7; i++) {
