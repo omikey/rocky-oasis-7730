@@ -50,7 +50,7 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
             if ($(window).width() > 1200) {
                 dash.append('<img style="border: solid gray 5px; ' +
                 'border-radius: 20px; background-color: #f0f0ff; margin-left: 4em; ' +
-                'margin-bottom: 6em; height:30em;" src="' +
+                'margin-bottom: 6em; height:25em;" src="' +
                 $('canvas').get(0).toDataURL() + '" />');
                 $('canvas').get(0).outerHTML = '';
             }
