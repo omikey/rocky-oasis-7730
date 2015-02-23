@@ -12,23 +12,23 @@
       "size": 1492189,
       "digest": "aae212b0c11db77fff351cd4588fc29a"
     },
-    "main-ef8658d5db02142ca72b8778f54d0960.js": {
+    "main-28e759e7a80ebcbc508d8827689c66d9.js": {
       "logical_path": "main.js",
-      "mtime": "2015-02-22T21:01:01-08:00",
-      "size": 10234,
-      "digest": "ef8658d5db02142ca72b8778f54d0960"
+      "mtime": "2015-02-23T00:10:43-08:00",
+      "size": 10281,
+      "digest": "28e759e7a80ebcbc508d8827689c66d9"
     },
-    "application-1c7f9c974ec0f2b701a44da4f3415a6c.css": {
+    "application-f0ce952ae4d2c337c0fd34ef865aa9ed.css": {
       "logical_path": "application.css",
-      "mtime": "2015-02-22T12:28:26-08:00",
-      "size": 6618,
-      "digest": "1c7f9c974ec0f2b701a44da4f3415a6c"
+      "mtime": "2015-02-22T23:40:09-08:00",
+      "size": 6694,
+      "digest": "f0ce952ae4d2c337c0fd34ef865aa9ed"
     }
   },
   "assets": {
     "logo.png": "logo-35770a60d8e25392146c69fa83392eca.png",
     "application.js": "application-aae212b0c11db77fff351cd4588fc29a.js",
-    "main.js": "main-ef8658d5db02142ca72b8778f54d0960.js",
-    "application.css": "application-1c7f9c974ec0f2b701a44da4f3415a6c.css"
+    "main.js": "main-28e759e7a80ebcbc508d8827689c66d9.js",
+    "application.css": "application-f0ce952ae4d2c337c0fd34ef865aa9ed.css"
   }
 }

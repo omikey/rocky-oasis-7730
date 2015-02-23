@@ -81,7 +81,7 @@
         {{row.mypace}}
       </td>
       <td style="text-align: center;font-size:1.2em;">
-        {{row.yourpace}}{{alert('<%= @alert %>')}}
+        {{row.yourpace}}{{alert('<%= @alert %>','<%= request.env['HTTP_USER_AGENT'].downcase %>')}}
       </td>
     </tr>
     <tr>

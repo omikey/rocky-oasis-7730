@@ -37,7 +37,7 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
         getSlider.css('top', '0');
     };
 
-    $scope.alert = function (message) {
+    $scope.alert = function (message, browser) {
         clock++;
         if (clock == 6) {
             if (message) {
@@ -47,7 +47,7 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
             var dash = $('#Dashboard');
             dash.css('top', '0');
 
-            if ($(window).width() > 1200) {
+            if (($(window).width() > 1200) && (browser.indexOf('chrome') >= 0)) {
                 var canv = $('canvas').get(0);
                 dash.append('<img style="border: solid gray 5px; ' +
                 'border-radius: 20px; background-color: #f0f0ff; margin-left: 4em; ' +
