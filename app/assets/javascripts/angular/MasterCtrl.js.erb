@@ -22,7 +22,6 @@ $scope.data = [];
             }
             $('.sliders').not('#Dashboard').fadeOut(500);
             var dash = $('#Dashboard');
-            dash.fadeIn(500);
             dash.css('top', '0');
 
             dash.append('<img style="border: solid gray 5px; ' +
@@ -31,6 +30,7 @@ $scope.data = [];
             $('canvas').get(0).toDataURL() + '" />');
             $('canvas').get(0).outerHTML = '';
 
+            dash.fadeIn(500);
         }
     };
 

@@ -45,7 +45,6 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
             }
             $('.sliders').not('#Dashboard').fadeOut(500);
             var dash = $('#Dashboard');
-            dash.fadeIn(500);
             dash.css('top', '0');
 
             dash.append('<img style="border: solid gray 5px; ' +
@@ -54,6 +53,7 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
             $('canvas').get(0).toDataURL() + '" />');
             $('canvas').get(0).outerHTML = '';
 
+            dash.fadeIn(500);
         }
     };
 
