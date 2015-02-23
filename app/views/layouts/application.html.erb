@@ -6,14 +6,18 @@
   <%= javascript_include_tag "application", controller_name %>
 </head>
 <body style="margin:0; background-color: #262626" ng-controller="MasterCtrl">
-<table class="backdrop" style="background-size: 100% 173px; background-repeat: no-repeat; width:100%; border-spacing: 0px;">
+<table class="backdrop" style="background-size: 100% 13.2em; background-repeat: no-repeat; width:100%; border-spacing: 0px;">
   <tr>
     <td></td>
-    <td style="border:0; height:140px; width:975px" colspan="7">
+    <td style="border:0; height:140px; width:975px" colspan="6">
       <img src="<%= image_url('logo.png') %>" style="position:relative;" />
     </td>
-    <td colspan="2">
-      <div ng-repeat="option in ['<%= @login ? "Sign Out" : "Register" %>','<%= @login ? @login["login"] : "Sign-in" %>']" class="logins" id="logger{{$index+1}}" ng-click="<%= @login ? 'regLog($index+3)' : 'regLog($index+1)' %>">
+    <td colspan="3">
+      <div ng-repeat="option in ['<%= @login ? "Sign Out" : "Register" %>','<%= @login ? @login["login"] : "Sign-in" %>']"
+           ng-style="{'margin-left':($first ? '4em' : '2em'), 'text-align':'center'}"
+           class="logins"
+           id="logger{{$index+1}}"
+           ng-click="<%= @login ? 'regLog($index+3)' : 'regLog($index+1)' %>">
         {{option}}
       </div>
     </td>
@@ -31,7 +35,7 @@
   </tr>
   <tr>
     <td></td>
-    <td colspan="9">
+    <td colspan="9" style="background-color: white;">
       <table style="width:100%; height:100%; border-spacing: 0px">
         <tr>
           <td style="border: solid white 10px; width:960px; height:1000px; background-color: #ffffff; font-size: 1.3em; font-family: 'Arial';">
