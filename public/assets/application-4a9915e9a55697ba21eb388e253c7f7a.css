@@ -177,13 +177,13 @@ input[type="password"] {
 .scores {
     width: 380px;
     background: #fff200; /* Old browsers */
-    background: -moz-linear-gradient(left, #ffff00 0%, #0000ff 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #ffff00), color-stop(100%, #0000ff)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(left, #ffff00 0%, #0000ff 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(left, #ffff00 0%, #0000ff 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(left, #ffff00 0%, #0000ff 100%); /* IE10+ */
-    background: linear-gradient(to right, #ffff00 0%, #0000ff 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff00', endColorstr='#0000ff', GradientType=1); /* IE6-9 */
+    background: -moz-linear-gradient(left, #ffff00 0%, #2994c3 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #ffff00), color-stop(100%, #2994c3)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, #ffff00 0%, #2994c3 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, #ffff00 0%, #2994c3 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, #ffff00 0%, #2994c3 100%); /* IE10+ */
+    background: linear-gradient(to right, #ffff00 0%, #2994c3 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff00', endColorstr='#2994c3', GradientType=1); /* IE6-9 */
 }
 
 .graph {

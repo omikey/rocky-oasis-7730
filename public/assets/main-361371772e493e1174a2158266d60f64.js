@@ -226,7 +226,7 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
                 blueY[i % 7] = ((blueY[i % 7] * myPart) + (centerY * yourPart)) / 100;
             }
 
-            context.strokeStyle = '#8888ff';
+            context.strokeStyle = '#8AB2C3';
             context.lineTo(centerX, centerY);
             context.beginPath();
             context.stroke();
@@ -236,7 +236,7 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
             }
             context.closePath();
 
-            context.strokeStyle = '#0000ff';
+            context.strokeStyle = '#2994c3';
             context.lineTo(centerX, centerY);
             context.beginPath();
             context.stroke();
@@ -247,7 +247,7 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
             context.closePath();
 
             for (var i = 0; i < 2; i++) {
-                context.strokeStyle = ['#8888ff', '#0000ff'][i];
+                context.strokeStyle = ['#8AB2C3', '#2994c3'][i];
                 context.beginPath();
                 context.lineTo(490 * cell, 15 * cell + (30 * cell * i));
                 context.stroke();
