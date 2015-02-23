@@ -274,7 +274,7 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
             }
             context.lineWidth = cell;
             for (var i = 0; i < 7; i++) {
-                for (var j = 0; j < 5; j++) {
+                for (var j = 0; j < 4; j++) {
                     context.beginPath();
                     context.moveTo(xLines[j * 2], yLines[j * 2]);
                     context.lineTo(xLines[(j * 2) + 1], yLines[(j * 2) + 1]);
