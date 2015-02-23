@@ -47,7 +47,7 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
             var dash = $('#Dashboard');
             dash.css('top', '0');
 
-            if (($(window).width() > 1200) && $('body').attr('chrome')) {
+            if (($(window).width() > 1200) && ($('body').attr('chrome') == 'true')) {
                 var canv = $('canvas').get(0);
                 dash.append('<img style="border: solid gray 5px; ' +
                 'border-radius: 20px; background-color: #f0f0ff; margin-left: 4em; ' +
@@ -145,7 +145,7 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
         Dashboard.get(function (resp) {
             $scope.data = resp;
 
-            var cell = (($(window).width() > 1200) && $('body').attr('chrome')) ? 10 : 1;
+            var cell = (($(window).width() > 1200) && ($('body').attr('chrome') == 'true')) ? 10 : 1;
             $('#thisGraph').attr('width', 620 * cell);
             $('#thisGraph').attr('height', 450 * cell);
 
