@@ -12,11 +12,11 @@
       "size": 1492189,
       "digest": "aae212b0c11db77fff351cd4588fc29a"
     },
-    "main-8405c70c5a7a3f5c0561c7f34cf013f8.js": {
+    "main-ef8658d5db02142ca72b8778f54d0960.js": {
       "logical_path": "main.js",
-      "mtime": "2015-02-22T20:12:13-08:00",
-      "size": 10215,
-      "digest": "8405c70c5a7a3f5c0561c7f34cf013f8"
+      "mtime": "2015-02-22T21:01:01-08:00",
+      "size": 10234,
+      "digest": "ef8658d5db02142ca72b8778f54d0960"
     },
     "application-1c7f9c974ec0f2b701a44da4f3415a6c.css": {
       "logical_path": "application.css",
@@ -28,7 +28,7 @@
   "assets": {
     "logo.png": "logo-35770a60d8e25392146c69fa83392eca.png",
     "application.js": "application-aae212b0c11db77fff351cd4588fc29a.js",
-    "main.js": "main-8405c70c5a7a3f5c0561c7f34cf013f8.js",
+    "main.js": "main-ef8658d5db02142ca72b8778f54d0960.js",
     "application.css": "application-1c7f9c974ec0f2b701a44da4f3415a6c.css"
   }
 }

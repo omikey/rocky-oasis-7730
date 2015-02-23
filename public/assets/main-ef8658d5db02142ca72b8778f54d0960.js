@@ -48,11 +48,12 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
             dash.css('top', '0');
 
             if ($(window).width() > 1200) {
+                var canv = $('canvas').get(0);
                 dash.append('<img style="border: solid gray 5px; ' +
                 'border-radius: 20px; background-color: #f0f0ff; margin-left: 4em; ' +
                 'margin-bottom: 6em; height:25em;" src="' +
-                $('canvas').get(0).toDataURL() + '" />');
-                $('canvas').get(0).outerHTML = '';
+                canv.toDataURL() + '" />');
+                canv.outerHTML = '';
             }
 
             dash.fadeIn(500);
@@ -93,8 +94,8 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
     }
 
     $scope.refresh = function () {
-        $(".sliders").fadeOut(1000);
-        $.wait(1000).then(function () {
+        $(".sliders").fadeOut(1500);
+        $.wait(1500).then(function () {
             window.location.href = "http://rocky-oasis-7730.herokuapp.com"
         });
     };
