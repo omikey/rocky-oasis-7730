@@ -19,7 +19,9 @@ class MainController < ApplicationController
     post.gsub!('&nbsp;', ' ')
     #binding.pry
 
-    Post.new(query_id: params[:query], user_id: session[:user]['id'], message: post).save
+    Post.new(query_id: params[:query],
+             user_id: session[:user]['id'],
+             message: post).save
     redirect_to(main_community_url)
   end
 
@@ -41,10 +43,12 @@ class MainController < ApplicationController
     end
 
     rand = rand(51)
-    @readingWPM = {total:100 + rand,percent:(((100+rand)/1.5) + 0.5).to_i}
+    @readingWPM = {total: 100 + rand,
+                   percent: (((100+rand)/1.5) + 0.5).to_i}
 
     rand = rand(4000)
-    @vocabulary = {total:4000 + rand,percent:(((4000+rand)/80) + 0.5).to_i}
+    @vocabulary = {total: 4000 + rand,
+                   percent: (((4000+rand)/80) + 0.5).to_i}
 
 
     @improvement = []
@@ -52,9 +56,12 @@ class MainController < ApplicationController
     7.times do |k|
       @improvement.push(50 + rand(51))
     end
-    render json: {listening: @listening, reading: @reading,
-                  readingWPM: @readingWPM, vocabulary: @vocabulary,
-                  improvement: @improvement, date: Time.now().strftime('%B %d, %Y'),
+    render json: {listening: @listening,
+                  reading: @reading,
+                  readingWPM: @readingWPM,
+                  vocabulary: @vocabulary,
+                  improvement: @improvement,
+                  date: Time.now().strftime('%B %d, %Y'),
                   goal: (rand(5)+6)*100}
   end
 
@@ -77,7 +84,7 @@ class MainController < ApplicationController
                       title: query.title,
                       posts: query.posts.count,
                       user: query.user.login,
-                      updated: query.posts.order(:updated_at).first[:updated_at].strftime('%b %e, %l:%M %p')})
+                      updated: query.posts.order(:updated_at).last[:updated_at].strftime('%b %e, %l:%M %p')})
       end
       render json: {queries: queries}
     else
@@ -87,7 +94,7 @@ class MainController < ApplicationController
                      title: forum.title,
                      queries: forum.queries.count,
                      responses: forum.queries.map { |k| k.posts.count }.inject { |sum, x| sum + x },
-                     updated: forum.queries.map { |k| k.posts.order(:updated_at).first[:updated_at] }.sort[0].strftime('%b %e, %l:%M %p')})
+                     updated: forum.queries.map { |k| k.posts.order(:updated_at).last[:updated_at] }.sort[0].strftime('%b %e, %l:%M %p')})
       end
       render json: {forums: forums}
     end
