@@ -50,12 +50,9 @@ class MainController < ApplicationController
     @vocabulary = {total: 4000 + rand,
                    percent: (((4000+rand)/80) + 0.5).to_i}
 
-
     @improvement = []
 
-    7.times do |k|
-      @improvement.push(50 + rand(51))
-    end
+    7.times { @improvement.push(50 + rand(51)) }
     render json: {listening: @listening,
                   reading: @reading,
                   readingWPM: @readingWPM,
