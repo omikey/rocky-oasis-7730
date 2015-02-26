@@ -1,7 +1,10 @@
-<table id="queries" style="display:none; position:absolute;">
+<table id="queries"
+       style="display:none; position:absolute;">
   <tr>
     <td style="height:2em">
-      <h1>Community</h1>
+      <h1>
+        Community
+      </h1>
     </td>
   </tr>
   <tr style="font-weight: 600">
@@ -19,7 +22,8 @@
     </td>
   </tr>
   <tr ng-repeat="query in data">
-    <td class="link" ng-click="postulate(query.id)">
+    <td class="link"
+        ng-click="postulate(query.id)">
       {{query.title}}
     </td>
     <td>

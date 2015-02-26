@@ -1,7 +1,9 @@
 <table id="forums">
   <tr>
     <td style="height:2em">
-      <h1>Community</h1>
+      <h1>
+        Community
+      </h1>
     </td>
   </tr>
   <tr style="font-weight: 600">
@@ -19,7 +21,8 @@
     </td>
   </tr>
   <tr ng-repeat="forum in data">
-    <td class="link" ng-click="forumulate(forum.id)">
+    <td class="link"
+        ng-click="forumulate(forum.id)">
       {{forum.title}}
     </td>
     <td>

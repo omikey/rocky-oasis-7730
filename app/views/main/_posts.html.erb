@@ -1,19 +1,22 @@
-<table id="posts" style="display:none; position:absolute;">
+<table id="posts"
+       style="display:none; position:absolute;">
   <tr>
     <td style="height:2em">
       <h1>Community</h1>
     </td>
   </tr>
-  <tr ng-repeat="post in data" ng-init="format(post.message)">
+  <tr ng-repeat="post in data"
+      ng-init="format(post.message)">
     <td>
       <table>
         <tr>
           <td>
             {{post.user}}
           </td>
-          <td rowspan="4" style="padding-left: 2em; vertical-align: top; font-size: 1.2em;">
-            <div id="post{{$index}}" style="width:30em;">
-
+          <td rowspan="4"
+              style="padding-left: 2em; vertical-align: top; font-size: 1.2em;">
+            <div id="post{{$index}}"
+                 style="width:30em;">
             </div>
           </td>
         </tr>
@@ -42,20 +45,36 @@
         <tr>
           <td colspan="2">
             <div style="width:15%; display: inline-block;">
-              <button type="button" ng-mousedown="bolder(0)" ng-mouseup="selector()" style="font-family: arial; font-weight: 600">
+              <button type="button"
+                      ng-mousedown="bolder(0)"
+                      ng-mouseup="selector()"
+                      style="font-family: arial; font-weight: 600">
                 B
               </button>
-              <button type="button" ng-mousedown="bolder(1)" ng-mouseup="selector()" style="font-family: 'Consolas', monospace; font-style: italic">
+              <button type="button"
+                      ng-mousedown="bolder(1)"
+                      ng-mouseup="selector()"
+                      style="font-family: 'Consolas', monospace; font-style: italic">
                 I
               </button>
-              <button type="button" ng-mousedown="bolder(2)" ng-mouseup="selector()" style="font-family: arial; text-decoration: underline">
+              <button type="button"
+                      ng-mousedown="bolder(2)"
+                      ng-mouseup="selector()"
+                      style="font-family: arial; text-decoration: underline">
                 U
               </button>
             </div>
             <div style="width:60%; display: inline-block; float: right; text-align: right;">
-              <input id="copylink" type="text" style="font-family:arial; width:80%; padding-left: 5px;" ng-model="copylink" placeholder="Enter URL here to create a link.">
+              <input id="copylink"
+                     type="text"
+                     style="font-family:arial; width:80%; padding-left: 5px;"
+                     ng-model="copylink"
+                     placeholder="Enter URL here to create a link.">
               </input>
-              <button type="button" ng-mousedown="bolder(3)" ng-mouseup="selector()" style="font-family: arial; color: blue">
+              <button type="button"
+                      ng-mousedown="bolder(3)"
+                      ng-mouseup="selector()"
+                      style="font-family: arial; color: blue">
                 link
               </button>
             </div>
@@ -63,17 +82,24 @@
         </tr>
         <tr>
           <td colspan="2">
-            <div id="textarea" contenteditable="true" style="width:100%; font-family: arial, sans-serif; font-size:1.2em; color: black; border:2px gray solid; height:8em; z-index: 50;"></div>
+            <div id="textarea"
+                 contenteditable="true"
+                 style="width:100%; font-family: arial, sans-serif; font-size:1.2em; color: black; border:2px gray solid; height:8em; z-index: 50;">
+            </div>
           </td>
         </tr>
         <tr>
           <td>
-            <button type="button" ng-click="cancel()" style="width:100%;">
+            <button type="button"
+                    ng-click="cancel()"
+                    style="width:100%;">
               Cancel
             </button>
           </td>
           <td>
-            <button type="button" ng-click="submit(data[0].id)" style="width:100%;">
+            <button type="button"
+                    ng-click="submit(data[0].id)"
+                    style="width:100%;">
               Submit
             </button>
           </td>
