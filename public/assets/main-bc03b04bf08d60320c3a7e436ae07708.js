@@ -554,11 +554,11 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
             context.lineJoin = 'round';
 
             for (var i = 0; i < 7; i++) {
-                context.beginPath();
+            context.beginPath();
                 context.arc(centerX, centerY, radius, 0, (((i * (2 / 7)) * Math.PI) + (1.5 * Math.PI)) % (2 * Math.PI), false);
                 context.lineTo(centerX, centerY);
-                context.stroke();
-                context.closePath();
+            context.stroke();
+            context.closePath();
             }
             context.beginPath();
             context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
@@ -625,7 +625,7 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
             context.stroke();
             for (var i = 0; i < 8; i++) {
                 context.lineTo(blueX[i % 7], blueY[i % 7]);
-                context.stroke();
+            context.stroke();
             }
             context.closePath();
 
@@ -641,9 +641,9 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
 
             for (var i = 0; i < 2; i++) {
                 context.strokeStyle = ['#8AB2C3', '#2994c3'][i];
-                context.beginPath();
+            context.beginPath();
                 context.lineTo(490 * cell, 15 * cell + (30 * cell * i));
-                context.stroke();
+            context.stroke();
                 context.lineTo(510 * cell, 15 * cell + (30 * cell * i));
                 context.stroke();
                 context.lineTo(510 * cell, 30 * cell + (30 * cell * i));
@@ -652,7 +652,7 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
                 context.stroke();
                 context.lineTo(490 * cell, 15 * cell + (30 * cell * i));
                 context.stroke();
-                context.closePath();
+            context.closePath();
             }
 
             var xLines = [10];
@@ -669,19 +669,19 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
             context.lineWidth = cell;
             for (var i = 0; i < 7; i++) {
                 for (var j = 0; j < 4; j++) {
-                    context.beginPath();
+                context.beginPath();
                     context.moveTo(xLines[j * 2], yLines[j * 2]);
                     context.lineTo(xLines[(j * 2) + 1], yLines[(j * 2) + 1]);
-                    context.stroke();
-                    context.closePath();
-                }
+                context.stroke();
+                context.closePath();
+            }
                 for (var j = 0; j < 10; j++) {
                     oldX = xLines[j] - centerX;
                     oldY = yLines[j] - centerY;
                     xLines[j] = centerX + (oldX * cos) - (oldY * sin);
                     yLines[j] = centerY + (oldX * sin) + (oldY * cos);
-                }
             }
-        });
+            }
+    });
     });
 }]);
