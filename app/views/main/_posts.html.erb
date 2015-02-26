@@ -38,36 +38,42 @@
   </tr>
   <tr>
     <td>
-      <table>
+      <table style="width:50em">
         <tr>
-          <td>
-            <button type="button" ng-mousedown="bolder(0)" ng-mouseup="selector()" style="font-family: arial; font-weight: 600">
-              B
-            </button>
-            <button type="button" ng-mousedown="bolder(1)" ng-mouseup="selector()" style="font-family: 'Consolas', monospace; font-style: italic">
-              I
-            </button>
-            <button type="button" ng-mousedown="bolder(2)" ng-mouseup="selector()" style="font-family: arial; text-decoration: underline">
-              U
-            </button>
-            <button type="button" ng-mousedown="bolder(3)" ng-mouseup="selector()" style="font-family: arial; color: blue">
-              link
-            </button>
-            <input id="copylink" type="text" style="font-family:arial; width:20em; padding-left: 5px;" ng-model="copylink" placeholder="Enter URL here to create a link.">
-            </input>
+          <td colspan="2">
+            <div style="width:15%; display: inline-block;">
+              <button type="button" ng-mousedown="bolder(0)" ng-mouseup="selector()" style="font-family: arial; font-weight: 600">
+                B
+              </button>
+              <button type="button" ng-mousedown="bolder(1)" ng-mouseup="selector()" style="font-family: 'Consolas', monospace; font-style: italic">
+                I
+              </button>
+              <button type="button" ng-mousedown="bolder(2)" ng-mouseup="selector()" style="font-family: arial; text-decoration: underline">
+                U
+              </button>
+            </div>
+            <div style="width:60%; display: inline-block; float: right; text-align: right;">
+              <input id="copylink" type="text" style="font-family:arial; width:80%; padding-left: 5px;" ng-model="copylink" placeholder="Enter URL here to create a link.">
+              </input>
+              <button type="button" ng-mousedown="bolder(3)" ng-mouseup="selector()" style="font-family: arial; color: blue">
+                link
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <div id="textarea" contenteditable="true" style="width:100%; font-family: arial, sans-serif; font-size:1.2em; color: black; border:2px gray solid; height:8em; z-index: 50;"></div>
           </td>
         </tr>
         <tr>
           <td>
-            <div id="textarea" contenteditable="true" style="width:390px; font-family: 'Consolas', monospace; color: black; border:2px gray solid; height:8em; z-index: 50;"></div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <button type="button" ng-click="cancel()" style="width:49.3%">
+            <button type="button" ng-click="cancel()" style="width:100%;">
               Cancel
             </button>
-            <button type="button" ng-click="submit(data[0].id)" style="width:49.3%">
+          </td>
+          <td>
+            <button type="button" ng-click="submit(data[0].id)" style="width:100%;">
               Submit
             </button>
           </td>
