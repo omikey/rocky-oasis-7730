@@ -41,19 +41,19 @@
       <table>
         <tr>
           <td>
-            <button type="button" ng-click="bolder(0)" style="font-family: 'Consolas', monospace; font-weight: 600">
+            <button type="button" ng-mousedown="bolder(0)" ng-mouseup="selector()" style="font-family: arial; font-weight: 600">
               B
             </button>
-            <button type="button" ng-click="bolder(1)" style="font-family: 'Consolas', monospace; font-style: italic">
+            <button type="button" ng-mousedown="bolder(1)" ng-mouseup="selector()" style="font-family: 'Consolas', monospace; font-style: italic">
               I
             </button>
-            <button type="button" ng-click="bolder(2)" style="font-family: 'Consolas', monospace; text-decoration: underline">
+            <button type="button" ng-mousedown="bolder(2)" ng-mouseup="selector()" style="font-family: arial; text-decoration: underline">
               U
             </button>
-            <button type="button" ng-click="bolder(3)" style="color: blue">
+            <button type="button" ng-mousedown="bolder(3)" ng-mouseup="selector()" style="font-family: arial; color: blue">
               link
             </button>
-            <input id="copylink" type="text" style="width:20em; padding-left: 5px;" ng-model="copylink" placeholder="Enter URL here to create a link.">
+            <input id="copylink" type="text" style="font-family:arial; width:20em; padding-left: 5px;" ng-model="copylink" placeholder="Enter URL here to create a link.">
             </input>
           </td>
         </tr>

@@ -17,6 +17,8 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
     for (var i = 0; i < 10000; i++) {
         swag[i] = [0, 0, 0, 0];
     }
+    $scope.lastStart = 0;
+    $scope.lastEnd = 0;
 
 
     $scope.submit = function (id) {
@@ -85,6 +87,9 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
         }
 
         stylize();
+
+        $scope.lastStart = start;
+        $scope.lastEnd = end;
     };
 
     function stylize() {
@@ -152,8 +157,22 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
             }
         }
 
+        if (bold || italics || underline || link) {
+            text = text + '</m>';
+        }
+
         $('#textarea').html(text);
     }
+
+    $scope.selector = function () {
+        var s = window.getSelection();
+        var p = $('#textarea').get(0);
+        var r = document.createRange();
+        r.setStart(p, 0);
+        r.setEnd(p, 0);
+        s.removeAllRanges();
+        s.addRange(r);
+    };
 
     $scope.linker = function () {
 
@@ -283,24 +302,9 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
 //alert(finalLetter);
         var s = window.getSelection();
         var p = $('#textarea').get(0);
-        var findM = $('#textarea').find('m');
-        var lenK = -1;
-        var toComp = s.getRangeAt(0).startContainer.parentNode;
-        for (var i = 0; i < findM.length; i++) {
-            if (findM.get(i) == toComp) {
-                lenK = i;
-            }
-        }
-
-        var l = lenK + 2 + backToTheFuture;
         var r = document.createRange();
-        var go = l + b;
-        //   go = go > $('#textarea').text().length-1 ? $('#textarea').text().length : go;
-        //       alert('l+b: ' + (l+b));
-        //       alert('length: ' + $('#textarea').text().length);
-        //       alert(k + ': ' + finalLetter);
-        r.setStart(p, l);
-        r.setEnd(p, l);
+        r.setStart(p, 2);
+        r.setEnd(p, 2);
         s.removeAllRanges();
         s.addRange(r);
     };

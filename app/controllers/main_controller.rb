@@ -17,7 +17,7 @@ class MainController < ApplicationController
   def postit
     post = params[:post]
     post.gsub!('&nbsp;', ' ')
-    binding.pry
+    #binding.pry
 
     Post.new(query_id: params[:query], user_id: session[:user]['id'], message: post).save
     redirect_to(main_community_url)
