@@ -1,0 +1,37 @@
+<table id="forums">
+  <tr>
+    <td style="height:2em">
+      <h1>Community</h1>
+    </td>
+  </tr>
+  <tr style="font-weight: 600">
+    <td style="width:50%">
+      Forums
+    </td>
+    <td style="width:15%">
+      Queries
+    </td>
+    <td style="width:15%">
+      Responses
+    </td>
+    <td style="width:15%">
+      Updated
+    </td>
+  </tr>
+  <tr ng-repeat="forum in data">
+    <td class="link" ng-click="forumulate(forum.id)">
+      {{forum.title}}
+    </td>
+    <td>
+      {{forum.queries}}
+    </td>
+    <td>
+      {{forum.responses}}
+    </td>
+    <td>
+      {{forum.updated}}
+    </td>
+  </tr>
+  <tr>
+  </tr>
+</table>

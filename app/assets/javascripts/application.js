@@ -22,3 +22,4 @@
 //= require angular-dragdrop-original
 //= require angular-ui-bootstrap
 //= require angular-ui-bootstrap-tpls
+//= require caret

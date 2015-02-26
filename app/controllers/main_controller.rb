@@ -14,6 +14,15 @@ class MainController < ApplicationController
     render nothing: true
   end
 
+  def postit
+    post = params[:post]
+    post.gsub!('&nbsp;', ' ')
+    #binding.pry
+
+    Post.new(query_id: params[:query], user_id: session[:user][:id], message: post).save
+    redirect_to(main_community_url)
+  end
+
   def dashboard
     @listening = []
     4.times do |k|
@@ -50,6 +59,37 @@ class MainController < ApplicationController
   end
 
   def community
-    render json: {hello: 'hello'}
+    if params[:get] == 'post'
+      posts = []
+      Post.where(query_id: params[:id]).each do |post|
+        posts.push({id: post.id,
+                    message: post.message,
+                    user: post.user.login,
+                    user_posts: post.user.posts.count,
+                    user_joined: post.user.created_at.strftime('%m/%d/%Y'),
+                    updated: post[:updated_at].strftime('%b %e, %l:%M %p')})
+      end
+      render json: {posts: posts}
+    elsif params[:get] == 'forum'
+      queries = []
+      Query.where(forum_id: params[:id]).includes(:posts).each do |query|
+        queries.push({id: query.id,
+                      title: query.title,
+                      posts: query.posts.count,
+                      user: query.user.login,
+                      updated: query.posts.order(:updated_at).first[:updated_at].strftime('%b %e, %l:%M %p')})
+      end
+      render json: {queries: queries}
+    else
+      forums = []
+      Forum.includes(queries: :posts).each do |forum|
+        forums.push({id: forum.id,
+                     title: forum.title,
+                     queries: forum.queries.count,
+                     responses: forum.queries.map { |k| k.posts.count }.inject { |sum, x| sum + x },
+                     updated: forum.queries.map { |k| k.posts.order(:updated_at).first[:updated_at] }.sort[0].strftime('%b %e, %l:%M %p')})
+      end
+      render json: {forums: forums}
+    end
   end
 end

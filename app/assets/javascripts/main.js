@@ -11,6 +11,10 @@ app.factory('Community', ['$resource', function ($resource) {
     return $resource('/main/community');
 }]);
 
+app.factory('SendPost', ['$resource', function ($resource) {
+    return $resource('/main/postit');
+}]);
+
 app.factory('SignOut', ['$resource', function ($resource) {
     return $resource('/main/signout');
 }]);

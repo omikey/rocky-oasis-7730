@@ -13,6 +13,10 @@
  *= require_tree .
  *= require_self
  */
+html {
+    overflow-x: hidden;
+}
+
 .backdrop {
     border: 0;
     background: #8e3931; /* Old browsers */
@@ -91,4 +95,16 @@ input[type="password"] {
 .logins:hover {
     cursor: pointer;
     text-decoration: underline;
+}
+
+.link {
+    text-decoration: underline;
+}
+
+.link:hover {
+    cursor: pointer;
+}
+
+#textarea {
+
 }

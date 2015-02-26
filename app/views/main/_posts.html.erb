@@ -1,0 +1,78 @@
+<table id="posts" style="display:none; position:absolute;">
+  <tr>
+    <td style="height:2em">
+      <h1>Community</h1>
+    </td>
+  </tr>
+  <tr ng-repeat="post in data" ng-init="format(post.message)">
+    <td>
+      <table>
+        <tr>
+          <td>
+            {{post.user}}
+          </td>
+          <td rowspan="4" style="padding-left: 2em; vertical-align: top; font-size: 1.2em;">
+            <div id="post{{$index}}" style="width:30em;">
+
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{post.updated + last($index)}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Posts: {{post.user_posts}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Joined: {{post.user_joined}}
+          </td>
+        </tr>
+      </table>
+      <hr>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table>
+        <tr>
+          <td>
+            <button type="button" ng-click="bolder(0)" style="font-family: 'Consolas', monospace; font-weight: 600">
+              B
+            </button>
+            <button type="button" ng-click="bolder(1)" style="font-family: 'Consolas', monospace; font-style: italic">
+              I
+            </button>
+            <button type="button" ng-click="bolder(2)" style="font-family: 'Consolas', monospace; text-decoration: underline">
+              U
+            </button>
+            <button type="button" ng-click="bolder(3)" style="color: blue">
+              link
+            </button>
+            <input id="copylink" type="text" style="width:20em; padding-left: 5px;" ng-model="copylink" placeholder="Enter URL here to create a link.">
+            </input>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div id="textarea" contenteditable="true" style="width:99%; font-family: 'Consolas', monospace; color: black; border:2px gray solid; height:8em; z-index: 50;"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button type="button" ng-click="cancel()" style="width:49.5%">
+              Cancel
+            </button>
+            <button type="button" ng-click="submit(data[0].id)" style="width:49.5%">
+              Submit
+            </button>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
