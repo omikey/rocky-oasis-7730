@@ -19,9 +19,18 @@ class MainController < ApplicationController
     post.gsub!('&nbsp;', ' ')
     #binding.pry
 
+    if params[:editid]
+      update = Post.find(params[:editid])
+      if update[:user_id] == session[:user]['id']
+        update[:message] = post
+        update[:swag] = params[:swag]
+        update.save
+      end
+    else
     Post.new(query_id: params[:query],
              user_id: session[:user]['id'],
-             message: post).save
+             message: post, swag: params[:swag]).save
+    end
     redirect_to(main_community_url)
   end
 
@@ -63,7 +72,15 @@ class MainController < ApplicationController
   end
 
   def community
-    if params[:get] == 'post'
+    if params[:get] == 'deletepost'
+      delete = Post.find(params[:id])
+      if delete[:user_id] == session[:user]['id']
+        delete.delete
+      end
+      redirect_to(main_community_url)
+    elsif params[:get] == 'edit'
+      render json: {post: Post.find(params[:id])}
+    elsif params[:get] == 'post'
       posts = []
       Post.where(query_id: params[:id]).each do |post|
         posts.push({id: post.id,
@@ -71,7 +88,9 @@ class MainController < ApplicationController
                     user: post.user.login,
                     user_posts: post.user.posts.count,
                     user_joined: post.user.created_at.strftime('%m/%d/%Y'),
-                    updated: post[:updated_at].strftime('%b %e, %l:%M %p')})
+                    updated: post[:updated_at].strftime('%b %e, %l:%M %p'),
+                    query: params[:id],
+                    mine: post.user.id == (session[:user] ? session[:user]['id'] : 0)})
       end
       render json: {posts: posts}
     elsif params[:get] == 'forum'

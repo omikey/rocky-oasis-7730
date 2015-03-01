@@ -13,7 +13,7 @@
           <td>
             {{post.user}}
           </td>
-          <td rowspan="4"
+          <td rowspan="3"
               style="padding-left: 2em; vertical-align: top; font-size: 1.2em;">
             <div id="post{{$index}}"
                  style="width:30em;">
@@ -33,6 +33,10 @@
         <tr>
           <td>
             Joined: {{post.user_joined}}
+          </td>
+          <td style="text-align: right;" ng-if="post.mine">
+            <span onclick="$('#pickme').removeAttr('id'); $(this).attr('id','pickme')" name="{{post.id}}" ng-click="edit(post.id)" style="text-decoration: underline; color: blue; cursor: pointer;">Edit</span>&nbsp;
+            <span onclick="$('#pickme').removeAttr('id'); $(this).attr('id','pickme')" name="{{post.id}}" ng-click="deleteMe(post.id)" style="text-decoration: underline; color: darkred; cursor: pointer;">Delete</span>
           </td>
         </tr>
       </table>
@@ -98,7 +102,7 @@
           </td>
           <td>
             <button type="button"
-                    ng-click="submit(data[0].id)"
+                    ng-click="submit(data[0].query_id)"
                     style="width:100%;">
               Submit
             </button>

@@ -3,7 +3,8 @@ class CreatePosts < ActiveRecord::Migration
     create_table :posts do |t|
       t.references :query, index: true
       t.references :user, index: true
-      t.string :message
+      t.text :message
+      t.text :swag
 
       t.timestamps null: false
     end

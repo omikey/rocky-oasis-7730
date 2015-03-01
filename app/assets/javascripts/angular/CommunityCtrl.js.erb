@@ -7,12 +7,31 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
         swag[i] = [0, 0, 0, 0];
     }
 
-
-    $scope.submit = function (id) {
-        SendPost.get({post: $('#textarea').html(), query: id}, function () {
+    $scope.deleteMe = function (id) {
+        Community.get({'get': 'deletepost', 'id': $('#pickme').attr('name')}, function () {
             window.scrollTo(0, 0);
             $('#posts').fadeOut(500);
-            $scope.forumulate(1);
+            $scope.forumulate($scope.data[0]['query']);
+        })
+    };
+
+
+    $scope.submit = function (id) {
+        var swagSaver = {};
+        for (var i = 0; i < 10000; i++) {
+            if ((swag[i][0] != 0) || (swag[i][1] != 0) || (swag[i][2] != 0) || (swag[i][3] != 0))
+                swagSaver[i] = swag[i];
+        }
+
+        SendPost.get({
+            editid: $('#pickme').attr('name'),
+            post: $('#textarea').html(),
+            query: $scope.data[0]['query'],
+            swag: swagSaver
+        }, function () {
+            window.scrollTo(0, 0);
+            $('#posts').fadeOut(500);
+            $scope.forumulate($scope.data[0]['query']);
         });
     };
 
@@ -166,6 +185,26 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
         });
     };
 
+
+    $scope.edit = function (id) {
+        Community.get({'get': 'edit', 'id': id}, function (resp) {
+            for (var i = 0; i < 10000; i++) {
+                swag[i] = [0, 0, 0, 0];
+            }
+            if (resp.post.swag) {
+                var hash = JSON.parse(resp.post.swag);
+                for (var i = 0; i < 10000; i++) {
+                    swag[i] = hash[i] || [0, 0, 0, 0];
+                }
+            }
+
+            $('#textarea').html(resp.post.message);
+            $('#textarea').html($('#textarea').text());
+
+            stylize();
+        })
+    };
+
     $scope.postulate = function (id) {
         $scope.postsCount = 0;
         Community.get({'get': 'post', 'id': id}, function (resp) {
@@ -181,7 +220,6 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
 
     $scope.format = function (post) {
         if (post) {
-
             $('#posts').prepend('<div style="display:none" id="p' + $scope.postsCount + '">' + post + '</div>');
             $scope.postsCount++;
         }
