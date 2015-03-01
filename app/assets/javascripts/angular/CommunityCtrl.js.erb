@@ -13,6 +13,11 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
         })
     };
 
+    $scope.cancelMe = function () {
+        window.scrollTo(0, 0);
+        $('#posts').fadeOut(500);
+        $scope.forumulate($scope.data[0]['query']);
+    };
 
     $scope.submit = function (id) {
         var swagSaver = {};
