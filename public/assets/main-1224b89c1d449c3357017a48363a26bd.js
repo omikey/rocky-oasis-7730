@@ -17,32 +17,38 @@ app.factory('SignOut', ['$resource', function ($resource) {
 }]);
 app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 'SendPost', function ($scope, $window, $document, Community, SendPost) {
     $scope.data = [];
-    $scope.bold = false;
-    $scope.binder = "";
-    $scope.letter = 0;
-    $scope.lastLength = 0;
     $scope.copylink = '';
-    $scope.linker = false;
-    $scope.holder = '';
-    $scope.copycat = '';
-    $scope.itsBack = false;
-    $scope.itsForward = false;
-    $scope.postPopper = [];
     $scope.postsCount = 0;
-    // new ones
     var swag = {};
     for (var i = 0; i < 10000; i++) {
         swag[i] = [0, 0, 0, 0];
     }
-    $scope.lastStart = 0;
-    $scope.lastEnd = 0;
+
+    $scope.deleteMe = function (id) {
+        Community.get({'get': 'deletepost', 'id': $('#pickme').attr('name')}, function () {
+            window.scrollTo(0, 0);
+            $('#posts').fadeOut(500);
+            $scope.forumulate($scope.data[0]['query']);
+        })
+    };
 
 
     $scope.submit = function (id) {
-        SendPost.get({post: $('#textarea').html(), query: id}, function () {
+        var swagSaver = {};
+        for (var i = 0; i < 10000; i++) {
+            if ((swag[i][0] != 0) || (swag[i][1] != 0) || (swag[i][2] != 0) || (swag[i][3] != 0))
+                swagSaver[i] = swag[i];
+        }
+
+        SendPost.get({
+            editid: $('#pickme').attr('name'),
+            post: $('#textarea').html(),
+            query: $scope.data[0]['query'],
+            swag: swagSaver
+        }, function () {
             window.scrollTo(0, 0);
             $('#posts').fadeOut(500);
-            $scope.forumulate(1);
+            $scope.forumulate($scope.data[0]['query']);
         });
     };
 
@@ -104,9 +110,6 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
         }
 
         stylize();
-
-        $scope.lastStart = start;
-        $scope.lastEnd = end;
     };
 
     function stylize() {
@@ -191,190 +194,6 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
         s.addRange(r);
     };
 
-    $scope.linker = function () {
-
-        if ($scope.copylink) {
-            $(window.getSelection().getRangeAt(0).startContainer.parentNode).attr('id', 1);
-            $(window.getSelection().getRangeAt(0).endContainer.parentNode).attr('name', 1);
-
-            var ms = $('#textarea').find('m');
-            var msLength = ms.length;
-            var len;
-            var len2;
-            var lenDone = false;
-
-            for (var i = 0; i < msLength; i++) {
-                var m = $(ms.get(i));
-
-                if ((m.attr('id') == 1) && (m.attr('name') == 1)) {
-                    len = len2 = i;
-                }
-
-                else if ((m.attr('id') == 1) || (m.attr('name') == 1)) {
-                    if (!lenDone) {
-                        len = i;
-                        lenDone = true;
-                    }
-                    else {
-                        len2 = i + 1;
-                        lenDone = false;
-                    }
-                }
-                m.removeAttr('id');
-                m.removeAttr('name');
-            }
-
-            for (var i = len; i < len2; i++) {
-                var link = $scope.copylink;
-                $($('#textarea').find('m').get(i)).attr('onclick', 'window.location.href="' + link + '"');
-                $($('#textarea').find('m').get(i)).css('cursor', 'pointer');
-                $($('#textarea').find('m').get(i)).css('color', 'blue');
-                $($('#textarea').find('m').get(i)).css('font-style', 'italic');
-                $($('#textarea').find('m').get(i)).css('text-decoration', 'underline');
-                $($('#textarea').find('m').get(i)).removeAttr('class');
-            }
-        }
-        else {
-            $('#copylink').focus();
-        }
-    };
-
-    $scope.checkLeft = function (event) {
-        if ((event.keyCode == 37) || (event.keyCode == 8)) {
-            $scope.itsBack = true;
-        }
-        if (event.keyCode == 39) {
-            $scope.itsForward = true;
-        }
-    };
-
-    $scope.copy = function (event) {
-        var backToTheFuture = 0;
-        if ($scope.itsBack) {
-            $scope.itsBack = false;
-            backToTheFuture--;
-        }
-//        if ($scope.itsForward)
-        //      {
-        //        $scope.itsForward = false;
-        //      backToTheFuture++;
-        //}
-
-        //var len = getCaretCharacterOffsetWithin($document[0].getElementById("textarea")) + 1;
-        var field = $('#textarea').text().length;
-        var arrows = field == $scope.lastLength;
-        $scope.lastLength = field;
-
-        var finalLetter;
-
-        if ($('#textarea').find('m').length > 0) {
-            for (var i = $('#textarea').find('m').length - 1; i >= 0; i--) {
-                $($('#textarea').find('m').get(i)).removeAttr('value');
-                var jbells = $($('#textarea').find('m').get(i)).html().length;
-                for (var j = 0; j < jbells; j++) {
-                    if (j == 1) {
-                        finalLetter = "" + $($('#textarea').find('m').get(i)).text().charAt(1);
-                        $('<m value="1">' + finalLetter + '</m>').insertAfter($('#textarea').find('m').get(i));
-                        $($('#textarea').find('m').get(i)).html($($('#textarea').find('m').get(i)).text().charAt(0));
-                    }
-                }
-            }
-        }
-
-        var text = $('#textarea').html();
-        var indexer = text.indexOf('<') >= 0 ? text.indexOf('<') : text.length;
-
-        if (indexer > 0) {
-            var filler = text.substring(0, indexer);
-            for (var i = 0; i < filler.length; i++) {
-                if ($('#textarea').find('m').length > 0) {
-                    finalLetter = "" + filler.charAt(i);
-                    $($('#textarea').find('m').get(0)).append('<m value="1">' + filler.charAt(i) + '</m>');
-                }
-                else {
-                    finalLetter = "" + filler.charAt(i);
-                    $('#textarea').append('<m value="1">' + filler.charAt(i) + '</m>');
-                }
-            }
-            text = $('#textarea').html();
-            indexer = text.indexOf('<') > 0 ? text.indexOf('<') : text.length;
-            $('#textarea').html(text.substring(indexer));
-        }
-
-        for (var i = 0; i < $('#textarea').find('m').length; i++) {
-            var tex = $($('#textarea').find('m').get(i));
-            if (tex.html() == '') {
-                tex.remove();
-            }
-            //   else
-            //     {
-            //           tex.attr('onmousedown','$(this).removeAttr("value");$(this).attr("value",1)');
-            //         }
-        }
-
-
-        var k = event.keyCode;
-        var b = 2;
-        //      b += (finalLetter == "'") ? 1 : 0;
-//alert(finalLetter);
-        var s = window.getSelection();
-        var p = $('#textarea').get(0);
-        var r = document.createRange();
-        r.setStart(p, 2);
-        r.setEnd(p, 2);
-        s.removeAllRanges();
-        s.addRange(r);
-    };
-
-    $scope.embolden = function (style, value, neg) {
-        $(window.getSelection().getRangeAt(0).startContainer.parentNode).attr('id', 1);
-        $(window.getSelection().getRangeAt(0).endContainer.parentNode).attr('name', 1);
-
-        var ms = $('#textarea').find('m');
-        var msLength = ms.length;
-        var len;
-        var len2;
-        var lenDone = false;
-
-        for (var i = 0; i < msLength; i++) {
-            var m = $(ms.get(i));
-
-            if ((m.attr('id') == 1) && (m.attr('name') == 1)) {
-                len = len2 = i;
-            }
-
-            else if ((m.attr('id') == 1) || (m.attr('name') == 1)) {
-                if (!lenDone) {
-                    len = i;
-                    lenDone = true;
-                }
-                else {
-                    len2 = i + 1;
-                    lenDone = false;
-                }
-            }
-            m.removeAttr('id');
-            m.removeAttr('name');
-        }
-
-
-        //alert('1: ' + len + ', 2:' + len2);
-
-        var reverse = true;
-        for (var i = len; i < len2; i++) {
-            if ($($('#textarea').find('m').get(i)).css(style) != value) {
-                reverse = false;
-            }
-            $($('#textarea').find('m').get(i)).css(style, value);
-        }
-
-        if (reverse) {
-            for (var i = len; i < len2; i++) {
-                $($('#textarea').find('m').get(i)).css(style, neg);
-            }
-        }
-    };
-
     $scope.forumulate = function (id) {
         Community.get({'get': 'forum', 'id': id}, function (resp) {
             $('#forums').fadeOut(500);
@@ -383,9 +202,28 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
         });
     };
 
+
+    $scope.edit = function (id) {
+        Community.get({'get': 'edit', 'id': id}, function (resp) {
+            for (var i = 0; i < 10000; i++) {
+                swag[i] = [0, 0, 0, 0];
+            }
+            if (resp.post.swag) {
+                var hash = JSON.parse(resp.post.swag);
+                for (var i = 0; i < 10000; i++) {
+                    swag[i] = hash[i] || [0, 0, 0, 0];
+                }
+            }
+
+            $('#textarea').html(resp.post.message);
+            $('#textarea').html($('#textarea').text());
+
+            stylize();
+        })
+    };
+
     $scope.postulate = function (id) {
         $scope.postsCount = 0;
-        $scope.postPopper = [];
         Community.get({'get': 'post', 'id': id}, function (resp) {
             $('#queries').fadeOut(500);
             $scope.data = resp.posts;
@@ -399,7 +237,6 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
 
     $scope.format = function (post) {
         if (post) {
-
             $('#posts').prepend('<div style="display:none" id="p' + $scope.postsCount + '">' + post + '</div>');
             $scope.postsCount++;
         }
@@ -558,11 +395,11 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
             context.lineJoin = 'round';
 
             for (var i = 0; i < 7; i++) {
-            context.beginPath();
+                context.beginPath();
                 context.arc(centerX, centerY, radius, 0, (((i * (2 / 7)) * Math.PI) + (1.5 * Math.PI)) % (2 * Math.PI), false);
                 context.lineTo(centerX, centerY);
-            context.stroke();
-            context.closePath();
+                context.stroke();
+                context.closePath();
             }
             context.beginPath();
             context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
@@ -629,7 +466,7 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
             context.stroke();
             for (var i = 0; i < 8; i++) {
                 context.lineTo(blueX[i % 7], blueY[i % 7]);
-            context.stroke();
+                context.stroke();
             }
             context.closePath();
 
@@ -639,15 +476,15 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
             context.stroke();
             for (var i = 0; i < 8; i++) {
                 context.lineTo(greenX[i % 7], greenY[i % 7]);
-            context.stroke();
+                context.stroke();
             }
             context.closePath();
 
             for (var i = 0; i < 2; i++) {
                 context.strokeStyle = ['#8AB2C3', '#2994c3'][i];
-            context.beginPath();
+                context.beginPath();
                 context.lineTo(490 * cell, 15 * cell + (30 * cell * i));
-            context.stroke();
+                context.stroke();
                 context.lineTo(510 * cell, 15 * cell + (30 * cell * i));
                 context.stroke();
                 context.lineTo(510 * cell, 30 * cell + (30 * cell * i));
@@ -656,7 +493,7 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
                 context.stroke();
                 context.lineTo(490 * cell, 15 * cell + (30 * cell * i));
                 context.stroke();
-            context.closePath();
+                context.closePath();
             }
 
             var xLines = [10];
@@ -673,19 +510,19 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
             context.lineWidth = cell;
             for (var i = 0; i < 7; i++) {
                 for (var j = 0; j < 4; j++) {
-                context.beginPath();
+                    context.beginPath();
                     context.moveTo(xLines[j * 2], yLines[j * 2]);
                     context.lineTo(xLines[(j * 2) + 1], yLines[(j * 2) + 1]);
-                context.stroke();
-                context.closePath();
-            }
+                    context.stroke();
+                    context.closePath();
+                }
                 for (var j = 0; j < 10; j++) {
                     oldX = xLines[j] - centerX;
                     oldY = yLines[j] - centerY;
                     xLines[j] = centerX + (oldX * cos) - (oldY * sin);
                     yLines[j] = centerY + (oldX * sin) + (oldY * cos);
+                }
             }
-            }
-    });
+        });
     });
 }]);
