@@ -9,9 +9,7 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
 
     $scope.deleteMe = function (id) {
         Community.get({'get': 'deletepost', 'id': $('#pickme').attr('name')}, function () {
-            window.scrollTo(0, 0);
-            $('#posts').fadeOut(500);
-            $scope.forumulate($scope.data[0]['query']);
+            $scope.postulate($scope.data[0]['query']);
         })
     };
 
@@ -29,9 +27,7 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
             query: $scope.data[0]['query'],
             swag: swagSaver
         }, function () {
-            window.scrollTo(0, 0);
-            $('#posts').fadeOut(500);
-            $scope.forumulate($scope.data[0]['query']);
+            $scope.postulate($scope.data[0]['query']);
         });
     };
 
