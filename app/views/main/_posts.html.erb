@@ -48,8 +48,8 @@
             Joined: {{post.user_joined}}
           </td>
           <td style="text-align: right;" ng-if="post.mine">
-            <span onclick="$('#pickme').removeAttr('id'); $(this).attr('id','pickme')" name="{{post.id}}" ng-click="edit(post.id)" style="text-decoration: underline; color: blue; cursor: pointer;">Edit</span>&nbsp;
-            <span onclick="$('#pickme').removeAttr('id'); $(this).attr('id','pickme')" name="{{post.id}}" ng-click="deleteMe(post.id)" style="text-decoration: underline; color: darkred; cursor: pointer;">Delete</span>
+            <span onclick="$('#pickme').removeAttr('id'); $(this).attr('id','pickme')" name="{{post.id}}" ng-click="edit(post.id)" style="font-size: 1.1em; text-decoration: underline; color: blue; cursor: pointer;">Edit</span>&nbsp;
+            <span onclick="$('#pickme').removeAttr('id'); $(this).attr('id','pickme')" name="{{post.id}}" ng-click="deleteMe(post.id)" style="font-size: 1.1em; text-decoration: underline; color: darkred; cursor: pointer;">Delete</span>
           </td>
         </tr>
       </table>
@@ -125,7 +125,7 @@
     </td>
   </tr>
   <tr>
-    <td style="text-align:right; padding-top:1em;">
+    <td style="text-align:right; padding-top:1em; font-size: 1em;">
       <span ng-click="forumulate(forum)" style="text-decoration: underline; cursor: pointer;">Back</span>&nbsp;&nbsp;&nbsp;
       <span ng-click="deleteQuery(query)" style="text-decoration: underline; cursor: pointer;">Delete Query</span>
     </td>

@@ -8,36 +8,37 @@
     </td>
   </tr>
   <tr style="font-weight: 600">
-    <td style="width:50%">
+    <td style="font-size: 1.1em; width:50%">
       Queries
     </td>
-    <td style="width:15%">
+    <td style="font-size: 1.1em; width:15%">
       Posts
     </td>
-    <td style="width:15%">
+    <td style="font-size: 1.1em; width:15%">
       User
     </td>
-    <td style="width:15%">
+    <td style="font-size: 1.1em; width:15%">
       Updated
     </td>
   </tr>
   <tr ng-repeat="query in data">
     <td class="link"
-        ng-click="postulate(query.id)">
+        ng-click="postulate(query.id)"
+        style="font-size: 1.1em;">
       {{query.title}}
     </td>
-    <td>
+    <td style="font-size: 1.1em;">
       {{query.posts}}
     </td>
-    <td>
+    <td style="font-size: 1.1em;">
       {{query.user}}
     </td>
-    <td>
+    <td style="font-size: 1.1em;">
       {{query.updated}}
     </td>
   </tr>
   <tr>
-    <td colspan="4" style="text-align: right; padding-top:3em;">
+    <td colspan="4" style="text-align: right; padding-top:3em; font-size: 1em; ">
       <span ng-click="formulize()" style="text-decoration: underline; cursor: pointer;">Back To Forums</span>&nbsp;&nbsp;&nbsp;
       <span ng-click="postulate(-1,data[0].forum_id)" style="text-decoration: underline; cursor: pointer;">Add Query</span>
     </td>
