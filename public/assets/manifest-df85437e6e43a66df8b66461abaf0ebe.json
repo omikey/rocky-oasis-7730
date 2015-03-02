@@ -6,17 +6,17 @@
       "size": 3847,
       "digest": "35770a60d8e25392146c69fa83392eca"
     },
-    "application-55ae3fe8eb7950d4e1e7949d438b8c49.js": {
+    "application-a2cceb510de7a0772c340e40a82de8aa.js": {
       "logical_path": "application.js",
-      "mtime": "2015-03-01T21:23:21-06:00",
-      "size": 1675453,
-      "digest": "55ae3fe8eb7950d4e1e7949d438b8c49"
+      "mtime": "2015-03-02T09:21:40-06:00",
+      "size": 1675004,
+      "digest": "a2cceb510de7a0772c340e40a82de8aa"
     },
-    "main-de6e253a2063ebe00f4e35e8a03fbbeb.js": {
+    "main-c45bc57f2e75379cb43d660fa333d5c1.js": {
       "logical_path": "main.js",
-      "mtime": "2015-03-02T09:19:41-06:00",
-      "size": 89394,
-      "digest": "de6e253a2063ebe00f4e35e8a03fbbeb"
+      "mtime": "2015-03-02T15:20:33-06:00",
+      "size": 90047,
+      "digest": "c45bc57f2e75379cb43d660fa333d5c1"
     },
     "application-b64f76d7e6e56ffea6df3be17b89a52b.css": {
       "logical_path": "application.css",
@@ -39,8 +39,8 @@
   },
   "assets": {
     "logo.png": "logo-35770a60d8e25392146c69fa83392eca.png",
-    "application.js": "application-55ae3fe8eb7950d4e1e7949d438b8c49.js",
-    "main.js": "main-de6e253a2063ebe00f4e35e8a03fbbeb.js",
+    "application.js": "application-a2cceb510de7a0772c340e40a82de8aa.js",
+    "main.js": "main-c45bc57f2e75379cb43d660fa333d5c1.js",
     "application.css": "application-b64f76d7e6e56ffea6df3be17b89a52b.css",
     "loading.gif": "loading-c7cf1d594db2187d6987200e6d1b65d3.gif",
     "progressbar.gif": "progressbar-b5be9c3e454834e518e241f56089f499.gif"

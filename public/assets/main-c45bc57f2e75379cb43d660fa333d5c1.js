@@ -25,6 +25,9 @@ app.factory('SignOut', ['$resource', function ($resource) {
 }]);
 app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 'SendPost', function ($scope, $window, $document, Community, SendPost) {
     $scope.data = [];
+    $scope.forum = '';
+    $scope.query = '';
+    $scope.thread = '';
 
     $scope.copylink = '';
     $scope.postsCount = 0;
@@ -33,6 +36,15 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
         swag[i] = [0, 0, 0, 0];
     }
 
+    $scope.setThread = function () {
+        Community.get({get: 'thread', id: $scope.query, thread: $('#thread').val()});
+    };
+
+    $scope.deleteQuery = function (query) {
+        Community.get({get: 'deleteQuery', id: query}, function () {
+            $scope.forumulate($scope.forum);
+        });
+    };
 
     $scope.getSize = function (pic) {
         var newImg = new Image();
@@ -53,14 +65,8 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
 
     $scope.deleteMe = function (id) {
         Community.get({'get': 'deletepost', 'id': $('#pickme').attr('name')}, function () {
-            $scope.postulate($scope.data[0]['query']);
+            $scope.postulate($scope.data[0]['query'], -1);
         })
-    };
-
-    $scope.cancelMe = function () {
-        window.scrollTo(0, 0);
-        $('#posts').fadeOut(500);
-        $scope.forumulate($scope.data[0]['query']);
     };
 
     $scope.submit = function (id) {
@@ -73,10 +79,10 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
         SendPost.get({
             editid: $('#pickme').attr('name'),
             post: $('#textarea').html(),
-            query: $scope.data[0]['query'],
+            query: $scope.query,
             swag: swagSaver
         }, function () {
-            $scope.postulate($scope.data[0]['query']);
+            $scope.postulate($scope.query, -1);
         });
     };
 
@@ -223,7 +229,9 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
     };
 
     $scope.forumulate = function (id) {
+        window.scrollTo(0, 0);
         Community.get({'get': 'forum', 'id': id}, function (resp) {
+            $('#posts').fadeOut(500);
             $('#forums').fadeOut(500);
             $scope.data = resp.queries;
             $('#queries').fadeIn(500);
@@ -250,14 +258,18 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
         })
     };
 
-    $scope.postulate = function (id) {
+    $scope.postulate = function (id, forum) {
         $scope.postsCount = 0;
-        Community.get({'get': 'post', 'id': id}, function (resp) {
+        Community.get({'get': 'post', 'id': id, 'forum': forum}, function (resp) {
             $('#queries').fadeOut(500);
             $scope.data = resp.posts;
 
+            $scope.forum = resp.forum;
+            $scope.query = resp.query;
+            $scope.thread = resp.thread;
+
             $('#posts').fadeIn(500, function () {
-                $('#alterHeight').css('height', parseInt($('#posts').css('height').replace('px', '')) + 100 + 'px');
+                $('#alterHeight').css('height', parseInt($('#posts').css('height').replace('px', '')) + 300 + 'px');
             });
         });
 
@@ -275,6 +287,14 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
             $('#post' + index).html($('#p' + index).html());
         }
         return '';
+    };
+
+    $scope.formulize = function () {
+        $('#queries').fadeOut(500);
+        Community.get({'get': 'index'}, function (resp) {
+            $scope.data = resp.forums;
+            $('#forums').fadeIn(500);
+        });
     };
 
     angular.element(document).ready(function () {
@@ -1091,7 +1111,7 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
                             dfd.rejectWith(
                                 o.context,
                                 [jqXHR, textStatus, errorThrown]
-                            );
+                                );
                         });
                 };
                 this._enhancePromise(promise);
@@ -1184,7 +1204,7 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
                         ((aborted || that._trigger(
                             'send',
                             $.Event('send', {delegatedEvent: e}),
-                            options
+                                    options
                         ) === false) &&
                         that._getXHRPromise(false, options.context, aborted)) ||
                         that._chunkedUpload(options) || $.ajax(options)
@@ -1213,7 +1233,7 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
                                         }
                                         nextSlot = that._slots.shift();
                                     }
-                                }
+                                        }
                                 if (that._active === 0) {
                                     // The stop callback is triggered when all uploads have
                                     // been completed, equivalent to the global ajaxStop event:
@@ -1357,7 +1377,7 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
                     errorHandler = function (e) {
                         if (e && !e.entry) {
                             e.entry = entry;
-                        }
+                            }
                         // Since $.when returns immediately if one
                         // Deferred is rejected, we use resolve instead.
                         // This allows valid files and invalid items
@@ -1436,7 +1456,7 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
                                     entry._file = item.getAsFile();
                                 }
                                 return entry;
-                            }
+                                }
                             return item.getAsEntry();
                         })
                     );
@@ -1645,8 +1665,8 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
                                 value = that._getRegExp(value);
                             }
                             options[key] = value;
+                            }
                         }
-                    }
                 );
             },
 
@@ -1719,7 +1739,7 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
                             function (files) {
                                 if (aborted) {
                                     return;
-                                }
+                                    }
                                 if (!files.length) {
                                     dfd.reject();
                                     return;
@@ -1749,6 +1769,7 @@ app.controller("CommunityCtrl", ['$scope', '$window', '$document', 'Community', 
         });
 
     }));
+
 
 
 }]);
@@ -1892,11 +1913,11 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
             context.lineJoin = 'round';
 
             for (var i = 0; i < 7; i++) {
-                context.beginPath();
+            context.beginPath();
                 context.arc(centerX, centerY, radius, 0, (((i * (2 / 7)) * Math.PI) + (1.5 * Math.PI)) % (2 * Math.PI), false);
                 context.lineTo(centerX, centerY);
-                context.stroke();
-                context.closePath();
+            context.stroke();
+            context.closePath();
             }
             context.beginPath();
             context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
@@ -1963,7 +1984,7 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
             context.stroke();
             for (var i = 0; i < 8; i++) {
                 context.lineTo(blueX[i % 7], blueY[i % 7]);
-                context.stroke();
+            context.stroke();
             }
             context.closePath();
 
@@ -1979,9 +2000,9 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
 
             for (var i = 0; i < 2; i++) {
                 context.strokeStyle = ['#8AB2C3', '#2994c3'][i];
-                context.beginPath();
+            context.beginPath();
                 context.lineTo(490 * cell, 15 * cell + (30 * cell * i));
-                context.stroke();
+            context.stroke();
                 context.lineTo(510 * cell, 15 * cell + (30 * cell * i));
                 context.stroke();
                 context.lineTo(510 * cell, 30 * cell + (30 * cell * i));
@@ -1990,7 +2011,7 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
                 context.stroke();
                 context.lineTo(490 * cell, 15 * cell + (30 * cell * i));
                 context.stroke();
-                context.closePath();
+            context.closePath();
             }
 
             var xLines = [10];
@@ -2007,19 +2028,19 @@ app.controller("MasterCtrl", ['$scope', '$timeout', 'Dashboard', 'SignOut', func
             context.lineWidth = cell;
             for (var i = 0; i < 7; i++) {
                 for (var j = 0; j < 4; j++) {
-                    context.beginPath();
+                context.beginPath();
                     context.moveTo(xLines[j * 2], yLines[j * 2]);
                     context.lineTo(xLines[(j * 2) + 1], yLines[(j * 2) + 1]);
-                    context.stroke();
-                    context.closePath();
-                }
+                context.stroke();
+                context.closePath();
+            }
                 for (var j = 0; j < 10; j++) {
                     oldX = xLines[j] - centerX;
                     oldY = yLines[j] - centerY;
                     xLines[j] = centerX + (oldX * cos) - (oldY * sin);
                     yLines[j] = centerY + (oldX * sin) + (oldY * cos);
-                }
             }
-        });
+            }
+    });
     });
 }]);

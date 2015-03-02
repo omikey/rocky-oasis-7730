@@ -93,7 +93,16 @@ class MainController < ApplicationController
   end
 
   def community
-    if params[:get] == 'deletepost'
+    if params[:get] == 'deleteQuery'
+      Post.where(query_id: params[:id]).delete_all
+      Query.find(params[:id]).delete
+      render nothing: true
+    elsif params[:get] == 'thread'
+      thread = Query.find(params[:id])
+      thread[:title] = params[:thread]
+      thread.save
+      render nothing: true
+    elsif params[:get] == 'deletepost'
       delete = Post.find(params[:id])
       if delete[:user_id] == session[:user]['id']
         delete.delete
@@ -102,6 +111,11 @@ class MainController < ApplicationController
     elsif params[:get] == 'edit'
       render json: {post: Post.find(params[:id])}
     elsif params[:get] == 'post'
+      if params[:id].to_i < 0
+        newQ = Query.new(title: 'New Query', user_id: session[:user]['id'], forum_id: params[:forum])
+        newQ.save
+        params[:id] = newQ[:id]
+      end
       posts = []
       Post.where(query_id: params[:id]).each do |post|
         posts.push({id: post.id,
@@ -114,15 +128,22 @@ class MainController < ApplicationController
                     query: params[:id],
                     mine: post.user.id == (session[:user] ? session[:user]['id'] : 0)})
       end
-      render json: {posts: posts}
+      changeThread = Query.where(id: params[:id]).first
+      if params[:thread]
+        changeThread[:title] = params[:thread]
+        changeThread.save
+      end
+      render json: {posts: posts, query: params[:id], forum: changeThread[:forum_id], thread: changeThread[:title]}
     elsif params[:get] == 'forum'
       queries = []
       Query.where(forum_id: params[:id]).includes(:posts).each do |query|
+        #binding.pry
         queries.push({id: query.id,
+                      forum_id: query.forum_id,
                       title: query.title,
                       posts: query.posts.count,
                       user: query.user.login,
-                      updated: query.posts.order(:updated_at).last[:updated_at].strftime('%b %e, %l:%M %p')})
+                      updated: (query.posts.order(:updated_at).map { |l| l[:updated_at] }[-1] || query[:updated_at]).strftime('%b %e, %l:%M %p')})
       end
       render json: {queries: queries}
     else
@@ -132,7 +153,7 @@ class MainController < ApplicationController
                      title: forum.title,
                      queries: forum.queries.count,
                      responses: forum.queries.map { |k| k.posts.count }.inject { |sum, x| sum + x },
-                     updated: forum.queries.map { |k| k.posts.order(:updated_at).last[:updated_at] }.sort[0].strftime('%b %e, %l:%M %p')})
+                     updated: forum.queries.map { |k| k.posts.order(:updated_at).map { |l| l[:updated_at] } }.inject { |sum, x| sum + x }.sort[-1].strftime('%b %e, %l:%M %p')})
       end
       render json: {forums: forums}
     end

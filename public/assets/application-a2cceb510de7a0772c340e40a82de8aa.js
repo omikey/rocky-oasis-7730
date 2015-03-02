@@ -46894,7 +46894,7 @@ angular.module('eb.caret', [])
 					events = $._data(elem, "events");
 					if (events && events.remove) {
 						$(elem).triggerHandler("remove");
-					}
+				}
 
 					// http://bugs.jquery.com/ticket/8235
 				} catch (e) {
@@ -46930,7 +46930,7 @@ angular.module('eb.caret', [])
 			// allow instantiation without "new" keyword
 			if (!this._createWidget) {
 				return new constructor(options, element);
-			}
+		}
 
 			// allow instantiation without initializing for simple inheritance
 			// must use "new" keyword (the code above always passes args)
@@ -47006,7 +47006,7 @@ angular.module('eb.caret', [])
 				// redefine the child widget using the same prototype that was
 				// originally used, but inherit from the new version of the base
 				$.widget(childPrototype.namespace + "." + childPrototype.widgetName, constructor, child._proto);
-			});
+		});
 			// remove the list of existing child constructors from the old constructor
 			// so the old child constructors can be garbage collected
 			delete existingConstructor._childConstructors;
@@ -47087,7 +47087,7 @@ angular.module('eb.caret', [])
 						instance.option(options || {});
 						if (instance._init) {
 							instance._init();
-						}
+					}
 					} else {
 						$.data(this, fullName, new object(options, this));
 					}
@@ -47095,7 +47095,7 @@ angular.module('eb.caret', [])
 			}
 
 			return returnValue;
-		};
+	};
 	};
 
 	$.Widget = function (/* options, element */) {
@@ -47132,7 +47132,7 @@ angular.module('eb.caret', [])
 					remove: function (event) {
 						if (event.target === element) {
 							this.destroy();
-						}
+					}
 					}
 				});
 				this.document = $(element.style ?
@@ -47239,7 +47239,7 @@ angular.module('eb.caret', [])
 				if (value) {
 					this.hoverable.removeClass("ui-state-hover");
 					this.focusable.removeClass("ui-state-focus");
-				}
+			}
 			}
 
 			return this;
@@ -47282,7 +47282,7 @@ angular.module('eb.caret', [])
 						( instance.options.disabled === true ||
 						$(this).hasClass("ui-state-disabled") )) {
 						return;
-					}
+				}
 					return ( typeof handler === "string" ? instance[handler] : handler )
 						.apply(instance, arguments);
 				}
@@ -47300,7 +47300,7 @@ angular.module('eb.caret', [])
 					delegateElement.delegate(selector, eventName, handlerProxy);
 				} else {
 					element.bind(eventName, handlerProxy);
-				}
+			}
 			});
 		},
 
@@ -47362,8 +47362,8 @@ angular.module('eb.caret', [])
 				for (prop in orig) {
 					if (!( prop in event )) {
 						event[prop] = orig[prop];
-					}
 				}
+			}
 			}
 
 			this.element.trigger(event, data);
@@ -47377,7 +47377,7 @@ angular.module('eb.caret', [])
 		$.Widget.prototype["_" + method] = function (element, options, callback) {
 			if (typeof options === "string") {
 				options = {effect: options};
-			}
+		}
 			var hasOptions,
 				effectName = !options ?
 					method :
@@ -47406,10 +47406,11 @@ angular.module('eb.caret', [])
 					next();
 				});
 			}
-		};
+	};
 	});
 
 	var widget = $.widget;
+
 
 
 }));
@@ -49097,6 +49098,7 @@ angular.module('eb.caret', [])
 	});
 
 }));
+
 
 
 /*

@@ -2,7 +2,13 @@
        style="display:none; position:absolute;">
   <tr>
     <td style="height:2em">
-      <h1>Community</h1>
+      <h1>Community >
+        <input id="thread" type="text" ng-model="thread" style="font-size: 1em" ng-if="(!data[0] || data[0].mine)">
+        <button type="button" ng-click="setThread()" ng-if="(!data[0] || data[0].mine)">
+          Set Query Title
+        </button>
+        <m ng-bind="thread" ng-if="!(!data[0] || data[0].mine)"></m>
+      </h1>
     </td>
   </tr>
   <tr ng-repeat="post in data"
@@ -102,20 +108,26 @@
         <tr>
           <td>
             <button type="button"
-                    ng-click="cancelMe()"
+                    ng-click="forumulate(forum)"
                     style="width:100%;">
               Cancel
             </button>
           </td>
           <td>
             <button type="button"
-                    ng-click="submit(data[0].query_id)"
+                    ng-click="submit(query)"
                     style="width:100%;">
               Submit
             </button>
           </td>
         </tr>
       </table>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:right; padding-top:1em;">
+      <span ng-click="forumulate(forum)" style="text-decoration: underline; cursor: pointer;">Back</span>&nbsp;&nbsp;&nbsp;
+      <span ng-click="deleteQuery(query)" style="text-decoration: underline; cursor: pointer;">Delete Query</span>
     </td>
   </tr>
 </table>
