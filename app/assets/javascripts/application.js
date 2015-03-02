@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.widget
 //= require underscore
 //= require bootstrap
 //= require angular
@@ -23,3 +24,5 @@
 //= require angular-ui-bootstrap
 //= require angular-ui-bootstrap-tpls
 //= require caret
+//= require z.jquery.fileupload
+//= require s3_file_field

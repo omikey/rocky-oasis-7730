@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root :to => 'main#index'
 
+  get 'users/register'
+  #get 'users/create'
   resources :users
   get 'main/dashboard'
   get 'main/community'

@@ -7,6 +7,27 @@ class MainController < ApplicationController
     end
     @user = User.new
     @login = session[:user]
+    @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: 201, acl: :public_read)
+
+    @policy = Base64.encode64(
+        {
+            expiration: 24.hours.from_now.utc.strftime('%Y-%m-%dT%H:%M:%SZ'),
+            conditions: [
+                {bucket: 'japanfour-assets'},
+                {acl: 'public-read'},
+                ['starts-with', '$key', ''],
+                {success_action_status: '201'}
+            ]
+        }.to_json
+    ).gsub(/\n|\r/, '')
+
+    @siggy = Base64.encode64(
+        OpenSSL::HMAC.digest(
+            OpenSSL::Digest::Digest.new('sha1'),
+            'Y6nL9iyGnWHQhYJUxrU0GjhYa/q0fyrvXdDnBIlz',
+            @policy
+        )
+    ).gsub(/\n/, '')
   end
 
   def signout
@@ -85,6 +106,7 @@ class MainController < ApplicationController
       Post.where(query_id: params[:id]).each do |post|
         posts.push({id: post.id,
                     message: post.message,
+                    avatar: post.user.avatar_url,
                     user: post.user.login,
                     user_posts: post.user.posts.count,
                     user_joined: post.user.created_at.strftime('%m/%d/%Y'),

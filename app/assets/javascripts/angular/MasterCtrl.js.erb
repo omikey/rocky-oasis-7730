@@ -90,7 +90,7 @@ $scope.data = [];
     }
 
     function register() {
-        $scope.messenger($('#register').html(), 300, 440, "Register for free!", ["Cancel", "Submit"]);
+        $scope.messenger($('#register').html(), 380, 500, "Register for free!", ["Cancel", "Submit"]);
         $('.ui-button:last').attr('onclick', '$("input:last").click()');
         $('form').attr('onsubmit', '$("#verify").click()');
     }

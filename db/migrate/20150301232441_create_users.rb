@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :login
       t.string :password
       t.string :token
+      t.string :avatar_url
       t.datetime :token_date
       t.boolean :status
 
@@ -14,3 +15,4 @@ class CreateUsers < ActiveRecord::Migration
     end
   end
 end
+

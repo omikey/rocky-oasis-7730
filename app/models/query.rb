@@ -1,5 +1,5 @@
 class Query < ActiveRecord::Base
-  belongs_to :user
   belongs_to :forum
+  belongs_to :user
   has_many :posts
 end

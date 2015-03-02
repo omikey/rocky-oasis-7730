@@ -11,13 +11,20 @@
       <table>
         <tr>
           <td>
-            {{post.user}}
+            <div style="height: 100px; width: 100px;" ng-if="post.avatar.length > 0">
+              <img src="{{post.avatar}}" style="{{getSize(post.avatar)}}">
+            </div>
           </td>
-          <td rowspan="3"
+          <td rowspan="4"
               style="padding-left: 2em; vertical-align: top; font-size: 1.2em;">
             <div id="post{{$index}}"
                  style="width:30em;">
             </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{post.user}}
           </td>
         </tr>
         <tr>

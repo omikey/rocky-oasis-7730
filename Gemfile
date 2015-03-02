@@ -9,6 +9,8 @@ Encoding.default_internal = Encoding::UTF_8
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'aws-sdk-v1'
+gem 's3_file_field'
 gem 'pg'
 gem 'puma'
 gem 'passenger'
