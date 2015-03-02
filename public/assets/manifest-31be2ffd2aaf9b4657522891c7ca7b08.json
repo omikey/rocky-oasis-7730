@@ -1,0 +1,48 @@
+{
+  "files": {
+    "logo-35770a60d8e25392146c69fa83392eca.png": {
+      "logical_path": "logo.png",
+      "mtime": "2015-02-15T18:17:15-06:00",
+      "size": 3847,
+      "digest": "35770a60d8e25392146c69fa83392eca"
+    },
+    "application-55ae3fe8eb7950d4e1e7949d438b8c49.js": {
+      "logical_path": "application.js",
+      "mtime": "2015-03-01T21:23:21-06:00",
+      "size": 1675453,
+      "digest": "55ae3fe8eb7950d4e1e7949d438b8c49"
+    },
+    "main-de6e253a2063ebe00f4e35e8a03fbbeb.js": {
+      "logical_path": "main.js",
+      "mtime": "2015-03-02T09:19:41-06:00",
+      "size": 89394,
+      "digest": "de6e253a2063ebe00f4e35e8a03fbbeb"
+    },
+    "application-b64f76d7e6e56ffea6df3be17b89a52b.css": {
+      "logical_path": "application.css",
+      "mtime": "2015-03-02T09:19:41-06:00",
+      "size": 6987,
+      "digest": "b64f76d7e6e56ffea6df3be17b89a52b"
+    },
+    "loading-c7cf1d594db2187d6987200e6d1b65d3.gif": {
+      "logical_path": "loading.gif",
+      "mtime": "2015-03-01T19:50:18-06:00",
+      "size": 3897,
+      "digest": "c7cf1d594db2187d6987200e6d1b65d3"
+    },
+    "progressbar-b5be9c3e454834e518e241f56089f499.gif": {
+      "logical_path": "progressbar.gif",
+      "mtime": "2015-03-01T19:50:18-06:00",
+      "size": 3323,
+      "digest": "b5be9c3e454834e518e241f56089f499"
+    }
+  },
+  "assets": {
+    "logo.png": "logo-35770a60d8e25392146c69fa83392eca.png",
+    "application.js": "application-55ae3fe8eb7950d4e1e7949d438b8c49.js",
+    "main.js": "main-de6e253a2063ebe00f4e35e8a03fbbeb.js",
+    "application.css": "application-b64f76d7e6e56ffea6df3be17b89a52b.css",
+    "loading.gif": "loading-c7cf1d594db2187d6987200e6d1b65d3.gif",
+    "progressbar.gif": "progressbar-b5be9c3e454834e518e241f56089f499.gif"
+  }
+}
